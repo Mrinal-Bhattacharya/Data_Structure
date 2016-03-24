@@ -1,0 +1,7 @@
+package com.java.ds.basic;
+
+public class Stack {
+	public static void main(String[] args) {
+
+	}
+}
