@@ -107,6 +107,40 @@ public class LinkedList<T> {
 		return count;
 	}
 
+	public void swap(final T x, final T y) {
+		if (x == y) {
+			return;
+		}
+		Node currX = this.head, prevX = null;
+
+		while ((currX != null) && (currX.data != x)) {
+			prevX = currX;
+			currX = currX.next;
+		}
+		Node currY = this.head, prevY = null;
+		while ((currY != null) && (currY.data != x)) {
+			prevY = currY;
+			currY = currY.next;
+		}
+		if ((currX == null) || (currY == null)) {
+			return;
+		}
+		if (prevX != null) {
+			prevX.next = currY;
+		} else {
+			this.head = currY;
+		}
+		if (prevY != null) {
+			prevY.next = currX;
+		} else {
+			this.head = currX;
+		}
+		final Node temp = currX.next;
+		currX.next = currY.next;
+		currY.next = temp;
+
+	}
+
 	public static void main(final String[] args) {
 		final LinkedList<Integer> llist = new LinkedList<Integer>();
 		// Insert 6. So linked list becomes 6->NUllist
