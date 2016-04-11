@@ -141,6 +141,21 @@ public class LinkedList<T> {
 
 	}
 
+	/*
+	 * Function to reverse the linked list. Iterate trough the linked list. In
+	 * loop, change next to prev, prev to current and current to next.
+	 */
+	public void reverse() {
+		Node current = this.head, prev = null, next = null;
+		while (current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		this.head = prev;
+	}
+
 	public static void main(final String[] args) {
 		final LinkedList<Integer> llist = new LinkedList<Integer>();
 		// Insert 6. So linked list becomes 6->NUllist
