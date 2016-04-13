@@ -1,3 +1,6 @@
+//****************************************************************
+//* Copyright (c) 2016 Ford Motor Company. All Rights Reserved.
+//****************************************************************
 package com.java.ds.basic.linkedlist;
 
 public class LinkedList<T> {
@@ -178,6 +181,9 @@ public class LinkedList<T> {
 		llist.insertAfter(llist.head.next, 8);
 
 		System.out.println("\nCreated Linked list is: ");
+		llist.printLinkedList();
+		System.out.println("After reverse ");
+		llist.reverse();
 		llist.printLinkedList();
 	}
 }
