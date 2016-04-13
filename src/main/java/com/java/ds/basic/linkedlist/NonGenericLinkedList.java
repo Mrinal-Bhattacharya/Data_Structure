@@ -65,37 +65,8 @@ public class NonGenericLinkedList {
 		}
 	}
 
-	public static void main(final String[] args) {
-		final NonGenericLinkedList nonGenericLinkedList = new NonGenericLinkedList();
-		final NonGenericLinkedList a = new NonGenericLinkedList();
-		final NonGenericLinkedList b = new NonGenericLinkedList();
-		a.push(15);
-		a.push(10);
-		a.push(5);
-
-		b.push(20);
-		b.push(3);
-		b.push(2);
-
-		final NonGenericLinkedList.Node merge = nonGenericLinkedList.sortedMerge(a.head, b.head);
-		nonGenericLinkedList.printLinkedList(merge);
-
-		final NonGenericLinkedList list = new NonGenericLinkedList();
-		list.head = list.new Node(1);
-		list.head.next = list.new Node(2);
-		list.head.next.next = list.new Node(3);
-		list.head.next.next.next = list.new Node(4);
-		list.head.next.next.next.next = list.new Node(5);
-
-		// Creating a loop for testing
-		list.head.next.next.next.next.next = list.head.next;
-		list.detectAndRemoveLoop(list.head);
-		System.out.println("Linked List after removing loop : ");
-		list.printLinkedList(list.head);
-	}
-
 	// Function that detects loop in the list
-	void detectAndRemoveLoop(final Node node) {
+	public void detectAndRemoveLoop(final Node node) {
 		Node slow = node;
 		Node fast = node.next;
 
@@ -126,4 +97,34 @@ public class NonGenericLinkedList {
 
 		}
 	}
+
+	public static void main(final String[] args) {
+		final NonGenericLinkedList nonGenericLinkedList = new NonGenericLinkedList();
+		final NonGenericLinkedList a = new NonGenericLinkedList();
+		final NonGenericLinkedList b = new NonGenericLinkedList();
+		a.push(15);
+		a.push(10);
+		a.push(5);
+
+		b.push(20);
+		b.push(3);
+		b.push(2);
+
+		final NonGenericLinkedList.Node merge = nonGenericLinkedList.sortedMerge(a.head, b.head);
+		nonGenericLinkedList.printLinkedList(merge);
+
+		final NonGenericLinkedList list = new NonGenericLinkedList();
+		list.head = list.new Node(1);
+		list.head.next = list.new Node(2);
+		list.head.next.next = list.new Node(3);
+		list.head.next.next.next = list.new Node(4);
+		list.head.next.next.next.next = list.new Node(5);
+
+		// Creating a loop for testing
+		list.head.next.next.next.next.next = list.head.next;
+		list.detectAndRemoveLoop(list.head);
+		System.out.println("Linked List after removing loop : ");
+		list.printLinkedList(list.head);
+	}
+
 }
