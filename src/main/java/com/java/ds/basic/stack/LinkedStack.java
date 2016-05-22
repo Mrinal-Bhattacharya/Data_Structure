@@ -29,7 +29,7 @@ public class LinkedStack {
 		return result;
 	}
 
-	private boolean isEmpty() {
+	public boolean isEmpty() {
 		return (this.length == 0);
 	}
 
