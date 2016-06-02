@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DynamicArrayQueueSpec {
-	DynamicArrayQueue queue;
+	private DynamicArrayQueue queue;
 
 	@Before
 	public void setUp() {
