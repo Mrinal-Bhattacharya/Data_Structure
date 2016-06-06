@@ -29,8 +29,16 @@ public class LinkedList<T> {
 	 */
 	public void push(final T new_data) {
 		final Node node = new Node(new_data);
-		node.next = this.head;
+		pointNewNodeNextToHead(node);
+		pointHeadToNewNode(node);
+	}
+
+	private void pointHeadToNewNode(final Node node) {
 		this.head = node;
+	}
+
+	private void pointNewNodeNextToHead(final Node node) {
+		node.next = this.head;
 	}
 
 	/*
@@ -43,21 +51,30 @@ public class LinkedList<T> {
 		}
 		final Node node = new Node(data);
 		node.next = prevNode.next;
-		prevNode.next = node;
+		pointNodeNextToNewNode(prevNode, node);
 	}
 
 	/* Appends a new node at the end. */
 	public void append(final T data) {
 		final Node node = new Node(data);
 		if (this.head == null) {
-			this.head = node;
+			pointHeadToNewNode(node);
 			return;
 		}
+		Node last = getLastNode();
+		pointNodeNextToNewNode(last, node);
+	}
+
+	private void pointNodeNextToNewNode(Node last, final Node node) {
+		last.next = node;
+	}
+
+	private Node getLastNode() {
 		Node last = this.head;
 		while (last.next != null) {
 			last = last.next;
 		}
-		last.next = node;
+		return last;
 	}
 
 	/* Given a key, deletes the first occurrence of key in linked list */
@@ -96,7 +113,7 @@ public class LinkedList<T> {
 			return;
 		}
 		final Node next = prev.next.next;
-		prev.next = next;
+		pointNodeNextToNewNode(prev, next);
 	}
 
 	/* Returns count of nodes in linked list */
@@ -129,18 +146,18 @@ public class LinkedList<T> {
 			return;
 		}
 		if (prevX != null) {
-			prevX.next = currY;
+			pointNodeNextToNewNode(prevX, currY);
 		} else {
-			this.head = currY;
+			pointHeadToNewNode(currY);
 		}
 		if (prevY != null) {
-			prevY.next = currX;
+			pointNodeNextToNewNode(prevY, currX);
 		} else {
-			this.head = currX;
+			pointHeadToNewNode(currX);
 		}
 		final Node temp = currX.next;
 		currX.next = currY.next;
-		currY.next = temp;
+		pointNodeNextToNewNode(currY, temp);
 
 	}
 
@@ -152,11 +169,11 @@ public class LinkedList<T> {
 		Node current = this.head, prev = null, next = null;
 		while (current != null) {
 			next = current.next;
-			current.next = prev;
+			pointNodeNextToNewNode(current, prev);
 			prev = current;
 			current = next;
 		}
-		this.head = prev;
+		pointHeadToNewNode(prev);
 	}
 
 	public static void main(final String[] args) {

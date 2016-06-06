@@ -31,7 +31,7 @@ public class DynamicArrayStack {
 	}
 
 	private void expand() {
-		final int[] newStack = new int[this.size() << 1];
+		final int[] newStack = new int[this.size() << 1];// double the size
 		System.arraycopy(this.stackArr, 0, newStack, 0, this.size());
 		this.stackArr = newStack;
 	}
