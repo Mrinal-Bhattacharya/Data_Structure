@@ -41,6 +41,11 @@ public class BinaryTreeNode {
 		this.right = right;
 	}
 
+	@Override
+	public String toString() {
+		return "BinaryTreeNode [data=" + this.data + "]";
+	}
+
 	public void preOrder(final BinaryTreeNode root) {
 		if (root != null) {
 			System.out.println(root.getData());
@@ -50,11 +55,11 @@ public class BinaryTreeNode {
 	}
 
 	public List<Integer> preOrderTraversal(final BinaryTreeNode root) {
-		final List<Integer> result = new ArrayList<Integer>();
+		final List<Integer> result = new ArrayList<>();
 		if (root == null) {
 			return result;
 		}
-		final Stack<BinaryTreeNode> s = new Stack<BinaryTreeNode>();
+		final Stack<BinaryTreeNode> s = new Stack<>();
 		s.push(root);
 		while (!s.isEmpty()) {
 			final BinaryTreeNode temp = s.pop();
@@ -80,11 +85,11 @@ public class BinaryTreeNode {
 	public List<Integer> inOrderTraversal(final BinaryTreeNode root) {
 
 		BinaryTreeNode node = root;
-		final List<Integer> result = new ArrayList<Integer>();
+		final List<Integer> result = new ArrayList<>();
 		if (node == null) {
 			return result;
 		}
-		final Stack<BinaryTreeNode> s = new Stack<BinaryTreeNode>();
+		final Stack<BinaryTreeNode> s = new Stack<>();
 		while (!s.isEmpty() || (node != null)) {
 
 			if (node != null) {
@@ -110,12 +115,12 @@ public class BinaryTreeNode {
 	public List<Integer> postOrderTraversal(final BinaryTreeNode root) {
 
 		final BinaryTreeNode node = root;
-		final List<Integer> result = new ArrayList<Integer>();
+		final List<Integer> result = new ArrayList<>();
 		if (node == null) {
 			return result;
 		}
-		final Stack<BinaryTreeNode> s1 = new Stack<BinaryTreeNode>();
-		final Stack<BinaryTreeNode> s2 = new Stack<BinaryTreeNode>();
+		final Stack<BinaryTreeNode> s1 = new Stack<>();
+		final Stack<BinaryTreeNode> s2 = new Stack<>();
 		s1.push(node);
 		while (!s1.isEmpty()) {
 			final BinaryTreeNode popNode = s1.pop();
@@ -136,11 +141,11 @@ public class BinaryTreeNode {
 
 	public List<Integer> levelOrder(final BinaryTreeNode root) {
 		final BinaryTreeNode node = root;
-		final List<Integer> result = new ArrayList<Integer>();
+		final List<Integer> result = new ArrayList<>();
 		if (node == null) {
 			return result;
 		}
-		final Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+		final Queue<BinaryTreeNode> q = new LinkedList<>();
 		q.offer(root);
 		while (!q.isEmpty()) {
 			final BinaryTreeNode pollNode = q.poll();
@@ -153,5 +158,29 @@ public class BinaryTreeNode {
 			}
 		}
 		return result;
+	}
+
+	// Give an algorithm for printing the level order in reverse order. For
+	// example the output for the below tree should be: 4, 5, 6, 7, 2, 3, 1.
+	public void levelOrderTraversalInReverseOrder(final BinaryTreeNode root) {
+		if (root == null) {
+			return;
+		}
+		final Stack<BinaryTreeNode> stack = new Stack<>();
+		final Queue<BinaryTreeNode> q = new LinkedList<>();
+		q.offer(root);
+		while (!q.isEmpty()) {
+			final BinaryTreeNode tmp = q.poll();
+			if (tmp.left != null) {
+				q.offer(tmp.left);
+			}
+			if (tmp.right != null) {
+				q.offer(tmp.right);
+			}
+			stack.push(tmp);
+		}
+		while (!stack.isEmpty()) {
+			System.out.println(stack.pop().getData());
+		}
 	}
 }
