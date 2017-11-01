@@ -1,5 +1,8 @@
 package com.java.ds.basic.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -91,4 +94,102 @@ public class BinaryTreeSolutionsSpec {
 		Assertions.assertThat(new BinaryTreeSolutions().widthUsingQueue(this.root)).isEqualTo(4);
 	}
 
+	@Test
+	public void testWidthMaxSum() {
+		Assertions.assertThat(new BinaryTreeSolutions().findLevelWithMaxSum(this.root)).isEqualTo(22);
+	}
+
+	@Test
+	public void testhasPathSum() {
+		Assertions.assertThat(new BinaryTreeSolutions().hasPathSum(this.root, 7)).isTrue();
+	}
+
+	@Test
+	public void tesAddBT() {
+		Assertions.assertThat(new BinaryTreeSolutions().addBT(this.root)).isEqualTo(28);
+		Assertions.assertThat(new BinaryTreeSolutions().addBTWithoutRecursion(this.root)).isEqualTo(28);
+	}
+
+	@Test
+	public void checkMirror() {
+		final BinaryTreeNode root1 = new BinaryTreeNode(1);
+		final BinaryTreeNode left1 = new BinaryTreeNode(2);
+		final BinaryTreeNode right1 = new BinaryTreeNode(3);
+		final BinaryTreeNode left1Of2 = new BinaryTreeNode(4);
+		final BinaryTreeNode right1Of2 = new BinaryTreeNode(5);
+		left1.setLeft(left1Of2);
+		left1.setRight(right1Of2);
+		root1.setLeft(left1);
+		root1.setRight(right1);
+
+		final BinaryTreeNode root2 = new BinaryTreeNode(1);
+		final BinaryTreeNode left2 = new BinaryTreeNode(3);
+		final BinaryTreeNode right2 = new BinaryTreeNode(2);
+		final BinaryTreeNode left2Of2 = new BinaryTreeNode(5);
+		final BinaryTreeNode right2Of2 = new BinaryTreeNode(4);
+		right2.setLeft(left2Of2);
+		right2.setRight(right2Of2);
+		root2.setLeft(left2);
+		root2.setRight(right2);
+
+		// new BinaryTreeSolutions().mirror(root1);
+		Assertions.assertThat(new BinaryTreeSolutions().areMirrors(root1, root2)).isTrue();
+	}
+
+	@Test
+	public void findSum() {
+		final BinaryTreeNode root = new BinaryTreeNode(1);
+		final BinaryTreeNode left = new BinaryTreeNode(3);
+		final BinaryTreeNode right = new BinaryTreeNode(-1);
+		final BinaryTreeNode leftOf2 = new BinaryTreeNode(2);
+		final BinaryTreeNode rightOf2 = new BinaryTreeNode(1);
+		rightOf2.setLeft(new BinaryTreeNode(1));
+		left.setLeft(leftOf2);
+		left.setRight(rightOf2);
+		final BinaryTreeNode leftOf3 = new BinaryTreeNode(4);
+		leftOf3.setLeft(new BinaryTreeNode(1));
+		leftOf3.setRight(new BinaryTreeNode(2));
+		final BinaryTreeNode rightOf3 = new BinaryTreeNode(5);
+		rightOf3.setRight(new BinaryTreeNode(6));
+		right.setLeft(leftOf3);
+		right.setRight(rightOf3);
+		root.setLeft(left);
+		root.setRight(right);
+		final List<List<Integer>> result = new ArrayList<>();
+		new BinaryTreeSolutions().findSum(5, 5, result, new ArrayList<Integer>(), root);
+		System.out.println(result);
+	}
+
+	@Test
+	public void buildTree() {
+		final int[] inOrder = { 4, 2, 5, 1, 3 };
+		final int[] preOrder = { 1, 2, 4, 5, 3 };
+		final int[] postOrder = { 4, 5, 2, 3, 1 };
+		final int len = inOrder.length;
+		final BinaryTreeNode root = new BinaryTreeSolutions().buildTree(inOrder, preOrder, 0, len - 1);
+		final BinaryTreeNode root2 = new BinaryTreeSolutions().buildTreePost(inOrder, postOrder, 0, len - 1);
+		System.out.println(root);
+		System.out.println(root2);
+	}
+
+	@Test
+	public void lca() {
+		// below method assumes that keys are present in Binary Tree. If one key
+		// is present and other is absent, then it returns the present key as
+		// LCA (Ideally should have returned NULL).
+		Assertions.assertThat(new BinaryTreeSolutions().findLCA(this.root, 4, 6).getData()).isEqualTo(1);
+
+		Assertions.assertThat(new BinaryTreeSolutions().findLCAInternal(this.root, 4, 8)).isEqualTo(-1);
+		Assertions.assertThat(new BinaryTreeSolutions().findLCAHack(this.root, 4, 8)).isNull();
+		Assertions.assertThat(new BinaryTreeSolutions().findLCAHack(this.root, 4, 6).getData()).isEqualTo(1);
+	}
+
+	@Test
+	public void printAncestor() {
+		new BinaryTreeSolutions().printAllAncestors(this.root, this.root.getRight().getLeft());
+		new BinaryTreeSolutions().printPath(this.root);
+		new BinaryTreeSolutions().printSpiral(this.root);
+		new BinaryTreeSolutions().printSpiralStack(this.root);
+		new BinaryTreeSolutions().sumVertical(this.root);
+	}
 }
