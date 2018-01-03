@@ -985,6 +985,57 @@ public class BinaryTreeSolutions {
 
 	}
 
+	// Construct all possible BSTs for keys 1 to N
+	public ArrayList<BinaryTreeNode> generateTrees(final int n) {
+		if (n == 0) {
+			return this.generateTrees(1, 0);
+		}
+		return this.generateTrees(1, n);
+	}
+
+	private ArrayList<BinaryTreeNode> generateTrees(final int start, final int end) {
+		final ArrayList<BinaryTreeNode> subTrees = new ArrayList<>();
+		if (start > end) {
+			subTrees.add(null);
+			return subTrees;
+		}
+		for (int i = start; i <= end; i++) {
+			final ArrayList<BinaryTreeNode> lefts = this.generateTrees(start, i - 1);
+			final ArrayList<BinaryTreeNode> rights = this.generateTrees(i + 1, end);
+			for (final BinaryTreeNode left : lefts) {
+				for (final BinaryTreeNode right : rights) {
+					final BinaryTreeNode node = new BinaryTreeNode(i);
+					node.setLeft(left);
+					node.setRight(right);
+					subTrees.add(node);
+				}
+			}
+		}
+		return subTrees;
+	}
+
+	// Given a tree with special property where leaves are represented with 'L'
+	// and internal node with "i". Also, assume that each node has either 0 or 2
+	// children. Given preorder traversal of this tree, construct the tree.
+	// Example: Given preorder strong => ILILL
+	public BinaryTreeNode buildTreeFromPreOrder(final char[] a, int i) {
+		if (a == null) {
+			return null;
+		}
+		if (a.length == i) {
+			return null;
+		}
+		final BinaryTreeNode node = new BinaryTreeNode(a[i]);
+		if (a[i] == 'L') {
+			return node;
+		}
+		i = i + 1;
+		node.setLeft(this.buildTreeFromPreOrder(a, i));
+		i = i + 1;
+		node.setRight(this.buildTreeFromPreOrder(a, i));
+		return node;
+	}
+
 }
 
 class Height {

@@ -192,4 +192,23 @@ public class BinaryTreeSolutionsSpec {
 		new BinaryTreeSolutions().printSpiralStack(this.root);
 		new BinaryTreeSolutions().sumVertical(this.root);
 	}
+
+	@Test
+	public void getAllBST() {
+		final ArrayList<BinaryTreeNode> trees = new BinaryTreeSolutions().generateTrees(3);
+		Assertions.assertThat(trees.size()).isEqualTo(5);
+		for (final BinaryTreeNode binaryTreeNode : trees) {
+			System.out.println("For root node " + binaryTreeNode);
+			new BinaryTreeSolutions().printPath(binaryTreeNode);
+		}
+
+	}
+
+	@Test
+	public void buildTreeWithSpecialChar() {
+		final BinaryTreeNode node = new BinaryTreeSolutions().buildTreeFromPreOrder("ILILL".toCharArray(), 0);
+		System.out.println(node);
+		System.out.println(node.getLeft());
+		System.out.println(node.getRight());
+	}
 }
