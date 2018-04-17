@@ -206,7 +206,7 @@ public class BinaryTreeSolutionsSpec {
 
 	@Test
 	public void buildTreeWithSpecialChar() {
-		final BinaryTreeNode node = new BinaryTreeSolutions().buildTreeFromPreOrder("ILILL".toCharArray(), 0);
+		final BinaryTreeNode node = new BinaryTreeSolutions().buildTreeFromPreOrder("IILLL".toCharArray(), 0);
 		System.out.println(node);
 		System.out.println(node.getLeft());
 		System.out.println(node.getRight());

@@ -11,6 +11,34 @@ import java.util.Stack;
 
 public class BinaryTreeSolutions {
 
+	// In Binary Search Tree, we can find maximum by traversing right pointers
+	// until we reach rightmost node. But in Binary Tree, we must visit every
+	// node to //figure out maximum
+
+	// Give an algorithm for finding maximum element in binary tree.
+	public int maxInBinarySearchTree(final BinaryTreeNode root) {
+		if (root == null) {
+			return Integer.MIN_VALUE;
+		}
+		BinaryTreeNode current = root;
+		while (current.getRight() != null) {
+			current = current.getRight();
+		}
+		return current.getData();
+	}
+
+	// Give an algorithm for finding minimum element in binary tree.
+	public int minInBinarySearchTree(final BinaryTreeNode root) {
+		if (root == null) {
+			return Integer.MIN_VALUE;
+		}
+		BinaryTreeNode current = root;
+		while (current.getLeft() != null) {
+			current = current.getLeft();
+		}
+		return current.getData();
+	}
+
 	// Give an algorithm for finding maximum element in binary tree.
 	public int maxInBinaryTree(final BinaryTreeNode root) {
 		int maxValue = Integer.MIN_VALUE;
@@ -53,6 +81,46 @@ public class BinaryTreeSolutions {
 			}
 		}
 		return maxValue;
+	}
+
+	// Give an algorithm for finding minimum element in binary tree without
+	// recursion.
+	public int minInBinaryTreeLevelOrder(final BinaryTreeNode root) {
+		int minValue = Integer.MAX_VALUE;
+		if (root == null) {
+			return minValue;
+		}
+		final Queue<BinaryTreeNode> q = new LinkedList<>();
+		q.offer(root);
+		while (!q.isEmpty()) {
+			final BinaryTreeNode temp = q.poll();
+			if (temp.getData() < minValue) {
+				minValue = temp.getData();
+			}
+			if (temp.getLeft() != null) {
+				q.offer(temp.getLeft());
+			}
+			if (temp.getRight() != null) {
+				q.offer(temp.getRight());
+			}
+		}
+		return minValue;
+	}
+
+	// Give an algorithm for finding minimum element in binary tree.
+	public int findMin(final BinaryTreeNode root) {
+		if (root == null) {
+			return Integer.MAX_VALUE;
+		}
+		int res = root.getData();
+		final int lMin = this.findMin(root.getLeft());
+		final int rMin = this.findMin(root.getRight());
+		if (lMin < res) {
+			res = lMin;
+		} else {
+			res = rMin;
+		}
+		return res;
 	}
 
 	// Given an algorithm for searching an element in binary tree.
@@ -163,6 +231,8 @@ public class BinaryTreeSolutions {
 
 	// Give an algorithm for finding the height( or depth) of the binary tree
 	// without recursion.
+	// NULL|3|2|NULL|1
+	//
 	public int maxDepthWithoutRecursive(final BinaryTreeNode root) {
 		if (root == null) {
 			return 0;
@@ -690,6 +760,7 @@ public class BinaryTreeSolutions {
 	// values n1 and n2. This function assumes that n1 and
 	// n2 are present in Binary Tree
 	BinaryTreeNode findLCA(final BinaryTreeNode node, final int n1, final int n2) {
+
 		// Base case
 		if (node == null) {
 			return null;
@@ -1034,6 +1105,32 @@ public class BinaryTreeSolutions {
 		i = i + 1;
 		node.setRight(this.buildTreeFromPreOrder(a, i));
 		return node;
+	}
+
+	public void fillNextSiblings(final SiblingBinaryTreeNode root) {
+		if (root == null) {
+			return;
+		}
+		SiblingBinaryTreeNode tmp = null;
+		final Queue<SiblingBinaryTreeNode> q = new LinkedList<>();
+		q.offer(root);
+		q.offer(null);
+		while (!q.isEmpty()) {
+			tmp = q.poll();
+			if (tmp != null) {
+				tmp.setNextSibling(q.peek());
+				if (tmp.getLeft() != null) {
+					q.offer(tmp.getLeft());
+				}
+				if (tmp.getRight() != null) {
+					q.offer(tmp.getRight());
+				}
+			} else {
+				if (!q.isEmpty()) {
+					q.offer(null);
+				}
+			}
+		}
 	}
 
 }
