@@ -58,4 +58,29 @@ public class ArraySolutions {
 		return maxSpan;
 	}
 
+	// Union and Intersection of two sorted arrays
+	public void union(final int[] arr1, final int[] arr2, final int arr1Length, final int arr2Length) {
+		int i = 0, j = 0;
+		while ((i < arr1Length) && (j < arr2Length)) {
+			if (arr1[i] == arr2[j]) {
+				System.out.println(arr1[i]);
+				i++;
+				j++;
+			} else if (arr1[i] < arr2[j]) {
+				System.out.println(arr1[i]);
+				i++;
+			} else {
+				System.out.println(arr2[j]);
+				j++;
+			}
+		}
+		while (i < arr1Length) {
+			System.out.println(arr1[i]);
+			i++;
+		}
+		while (j < arr2Length) {
+			System.out.println(arr2[j]);
+			j++;
+		}
+	}
 }
