@@ -1133,6 +1133,33 @@ public class BinaryTreeSolutions {
 		}
 	}
 
+	public int inOrderSuccessor(final BinaryTreeNode root, final int key, final BinaryTreeNode parent) {
+		if (root == null) {
+			return -1;
+		}
+		if (root.getData() == key) {
+			if (root.getRight() != null) {
+				return this.findExtremeLeftNode(root.getRight());
+			} else {
+				return parent != null ? parent.getData() : -1;
+			}
+		}
+		final int left = this.inOrderSuccessor(root.getLeft(), key, root);
+		if (left != -1) {
+			return left;
+		}
+		return this.inOrderSuccessor(root.getRight(), key, parent);
+
+	}
+
+	private int findExtremeLeftNode(BinaryTreeNode node) {
+
+		while (node.getLeft() != null) {
+			node = node.getLeft();
+		}
+		return node.getData();
+	}
+
 }
 
 class Height {

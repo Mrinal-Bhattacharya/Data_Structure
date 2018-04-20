@@ -1,17 +1,8 @@
 package com.java.ds.basic.tree;
 
 public class ThreadBinarySolutions {
-	public static void main(final String[] args) {
-		ThreadBinaryTree root = null;
-		root = ThreadBinarySolutions.insert(root, 20);
-		root = ThreadBinarySolutions.insert(root, 10);
-		root = ThreadBinarySolutions.insert(root, 30);
-		final ThreadBinaryTree node10 = ThreadBinarySolutions.findInBT(root, 10);
-		System.out.println(node10.getRight());
 
-	}
-
-	private static ThreadBinaryTree insert(final ThreadBinaryTree root, final int i) {
+	public ThreadBinaryTree insert(final ThreadBinaryTree root, final int i) {
 		final ThreadBinaryTree tmp = new ThreadBinaryTree(i);
 		if (root == null) {
 			return tmp;
@@ -49,7 +40,7 @@ public class ThreadBinarySolutions {
 		return root;
 	}
 
-	public static ThreadBinaryTree findInBT(final ThreadBinaryTree root, final int data) {
+	public ThreadBinaryTree findInBT(final ThreadBinaryTree root, final int data) {
 		if (root == null) {
 			return null;
 		}
@@ -57,9 +48,9 @@ public class ThreadBinarySolutions {
 			return root;
 		}
 		if (data < root.getData()) {
-			return ThreadBinarySolutions.findInBT(root.getLeft(), data);
+			return this.findInBT(root.getLeft(), data);
 		} else {
-			return ThreadBinarySolutions.findInBT(root.getRight(), data);
+			return this.findInBT(root.getRight(), data);
 		}
 	}
 }

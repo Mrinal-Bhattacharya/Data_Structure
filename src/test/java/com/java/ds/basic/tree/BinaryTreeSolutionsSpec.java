@@ -11,6 +11,10 @@ public class BinaryTreeSolutionsSpec {
 
 	BinaryTreeNode root = null;
 
+	// -----------------1
+	// -----------2-----------3
+	// -------4------5--- 6------ 7
+
 	@Before
 	public void setUp() {
 		this.root = new BinaryTreeNode(1);
@@ -210,5 +214,24 @@ public class BinaryTreeSolutionsSpec {
 		System.out.println(node);
 		System.out.println(node.getLeft());
 		System.out.println(node.getRight());
+	}
+
+	@Test
+	public void inOrder() {
+		final List<Integer> result = this.root.inOrderTraversal(this.root);
+		Assertions.assertThat(result).containsExactly(4, 2, 5, 1, 6, 3, 7);
+		this.root.inOrder(this.root);
+	}
+
+	@Test
+	public void inOrderSuccessor() throws Exception {
+		final BinaryTreeNode parent = null;
+		int result = new BinaryTreeSolutions().inOrderSuccessor(this.root, 5, parent);
+		Assertions.assertThat(result).isEqualTo(1);
+		result = new BinaryTreeSolutions().inOrderSuccessor(this.root, 2, parent);
+		Assertions.assertThat(result).isEqualTo(5);
+		final BinaryTreeNode root2 = new BinaryTreeNode(100);
+		result = new BinaryTreeSolutions().inOrderSuccessor(root2, 100, parent);
+		Assertions.assertThat(result).isEqualTo(-1);
 	}
 }
