@@ -33,4 +33,18 @@ public class ArraySpec {
 		final List<Integer> intersection = new ArraySolutions().intersection(arr1, arr2, arr1.length, arr2.length);
 		Assertions.assertThat(intersection).containsExactly(3, 5);
 	}
+
+	@Test
+	public void missingNo() throws Exception {
+		final int arr1[] = { 1, 2, 3, 5, 6 };
+		final int result = new ArraySolutions().missingNo(arr1, 5);
+		Assertions.assertThat(result).isEqualTo(4);
+	}
+
+	@Test
+	public void minDist() throws Exception {
+		final int arr1[] = { 3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3 };
+		final int result = new ArraySolutions().minDist(arr1, 3, 6);
+		Assertions.assertThat(result).isEqualTo(4);
+	}
 }

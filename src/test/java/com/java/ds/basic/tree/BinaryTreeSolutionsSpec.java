@@ -2,6 +2,7 @@ package com.java.ds.basic.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -233,5 +234,11 @@ public class BinaryTreeSolutionsSpec {
 		final BinaryTreeNode root2 = new BinaryTreeNode(100);
 		result = new BinaryTreeSolutions().inOrderSuccessor(root2, 100, parent);
 		Assertions.assertThat(result).isEqualTo(-1);
+	}
+
+	@Test
+	public void reverseLevelOrder() {
+		new BinaryTreeSolutions().reverseLevelOrder(this.root);
+		
 	}
 }

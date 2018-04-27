@@ -106,4 +106,51 @@ public class ArraySolutions {
 		}
 		return result;
 	}
+
+	public void test() {
+		final int a = 61;
+		final int n = 6;
+		final int d = 1;
+		final int b[] = { 62, 66, 63, 64, 65 };
+		int sum = 0;
+		for (int i = 0; i < b.length; i++) {
+			sum += b[i];
+		}
+		final int actual = (n / 2) * (((2 * a) + ((n - 1) * d)));
+		System.out.println(actual - sum);
+	}
+
+	public int missingNo(final int[] arr1, final int n) {
+		// total=n*(n+1)/2
+		final int j = n + 1;
+		int total = (j * (j + 1)) / 2;
+		// int total = ((n + 1) * (n + 2)) / 2;
+		for (int i = 0; i < n; i++) {
+			total -= arr1[i];
+		}
+		return total;
+	}
+
+	public int minDist(final int arr[], final int x, final int y) {
+		int min_dist = Integer.MAX_VALUE;
+		int i = 0;
+		int prev = 0;
+		for (; i < arr.length; i++) {
+			if ((arr[i] == x) || (arr[i] == y)) {
+				prev = i;
+				break;
+			}
+		}
+		for (; i < arr.length; i++) {
+			if ((arr[i] == x) || (arr[i] == y)) {
+				if (arr[i] != arr[prev]) {
+					if (min_dist > (i - prev)) {
+						min_dist = i - prev;
+					}
+				}
+				prev = i;
+			}
+		}
+		return min_dist;
+	}
 }

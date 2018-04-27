@@ -18,7 +18,7 @@ public class ThreadBinarySolutions {
 					break;
 				}
 			} else {
-				if (current.isrThread() == false) {
+				if (current.isRThread() == false) {
 					current = current.getRight();
 				} else {
 					break;
@@ -52,5 +52,37 @@ public class ThreadBinarySolutions {
 		} else {
 			return this.findInBT(root.getRight(), data);
 		}
+	}
+
+	public ThreadBinaryTree inOrderSuccessor(final ThreadBinaryTree node) {
+		ThreadBinaryTree position;
+		if (node.isRThread() == false) {
+			return node.getRight();
+		} else {
+			position = node.getRight();
+			while ((position != null) && position.islThread()) {
+				position = position.getLeft();
+			}
+			return position;
+		}
+	}
+
+	public void inOrderTraversal(final ThreadBinaryTree root) {
+		ThreadBinaryTree curr = this.findLeftMost(root);
+		while (curr != null) {
+			System.out.println(curr.getData());
+			curr = curr.getRight();
+		}
+
+	}
+
+	private ThreadBinaryTree findLeftMost(ThreadBinaryTree node) {
+		if (node == null) {
+			return null;
+		}
+		while (node.getLeft() != null) {
+			node = node.getLeft();
+		}
+		return node;
 	}
 }

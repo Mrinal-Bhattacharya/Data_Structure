@@ -43,7 +43,7 @@ public class ThreadBinaryTree {
 		return this.lThread;
 	}
 
-	public boolean isrThread() {
+	public boolean isRThread() {
 		return this.rThread;
 	}
 

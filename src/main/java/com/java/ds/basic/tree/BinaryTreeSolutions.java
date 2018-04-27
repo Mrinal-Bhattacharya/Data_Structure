@@ -1160,6 +1160,26 @@ public class BinaryTreeSolutions {
 		return node.getData();
 	}
 
+	public void reverseLevelOrder(final BinaryTreeNode root) {
+		final Queue<BinaryTreeNode> q = new LinkedList<>();
+		final Stack<BinaryTreeNode> s = new Stack<>();
+		q.offer(root);
+		while (!q.isEmpty()) {
+			final BinaryTreeNode tmp = q.poll();
+			s.push(tmp);
+			if (tmp.getRight() != null) {
+				q.offer(tmp.getRight());
+			}
+			if (tmp.getLeft() != null) {
+				q.offer(tmp.getLeft());
+			}
+		}
+		while (!s.isEmpty()) {
+			System.out.println(s.pop().getData());
+		}
+
+	}
+
 }
 
 class Height {

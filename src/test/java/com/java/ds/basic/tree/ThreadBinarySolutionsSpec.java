@@ -14,4 +14,13 @@ public class ThreadBinarySolutionsSpec {
 		System.out.println(node10.getRight());
 	}
 
+	@Test
+	public void test2() {
+		ThreadBinaryTree root = null;
+		root = new ThreadBinarySolutions().insert(root, 20);
+		root = new ThreadBinarySolutions().insert(root, 10);
+		root = new ThreadBinarySolutions().insert(root, 30);
+		new ThreadBinarySolutions().inOrderTraversal(root);
+	}
+
 }
