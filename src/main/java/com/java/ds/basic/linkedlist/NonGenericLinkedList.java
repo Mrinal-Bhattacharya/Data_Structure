@@ -30,8 +30,8 @@ public class NonGenericLinkedList {
 	}
 
 	/*
-	 * Takes two lists sorted in increasing order, and splices their nodes
-	 * together to make one big sorted list which is returned.
+	 * Takes two lists sorted in increasing order, and splices their nodes together
+	 * to make one big sorted list which is returned.
 	 */
 	public Node sortedMerge(Node a, Node b) {
 		Node tail = new Node(-1);
@@ -63,6 +63,19 @@ public class NonGenericLinkedList {
 			System.out.print(n.data + " ");
 			n = n.next;
 		}
+	}
+
+	Node reverse(final Node head) {
+		Node prev = null;
+		Node current = head;
+		Node next;
+		while (current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		return prev;
 	}
 
 	// Function that detects loop in the list
@@ -125,6 +138,9 @@ public class NonGenericLinkedList {
 		list.detectAndRemoveLoop(list.head);
 		System.out.println("Linked List after removing loop : ");
 		list.printLinkedList(list.head);
+
+		final int x = 23 % 10;
+		System.out.println(">>>>>>>>>>>>>>. " + x);
 	}
 
 }

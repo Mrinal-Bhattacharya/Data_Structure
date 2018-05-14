@@ -5,13 +5,13 @@ import java.util.Stack;
 public class StackUtil {
 
 	/*
-	 * Given an array of characters formed with a's and b's. The string is
-	 * marked with special character X which means represents the middle of the
-	 * list(for example ababXbaba). Check string is palindrome.
+	 * Given an array of characters formed with a's and b's. The string is marked
+	 * with special character X which means represents the middle of the list(for
+	 * example ababXbaba). Check string is palindrome.
 	 */
 	public boolean isPalindrome(final String inputStr) {
 		final char inputChar[] = inputStr.toCharArray();
-		final Stack<Character> stack = new Stack<Character>();
+		final Stack<Character> stack = new Stack<>();
 		int i = 0;
 		while (inputChar[i] != 'X') {
 			stack.push(inputChar[i]);
