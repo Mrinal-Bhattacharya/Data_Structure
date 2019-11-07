@@ -1,5 +1,7 @@
 package com.java.dp;
 
+import java.util.List;
+
 public class MaxSubArraySum {
 
 	static void maxSubArraySum(final int a[], final int size) {
@@ -22,6 +24,16 @@ public class MaxSubArraySum {
 		System.out.println("Maximum contiguous sum is " + max_so_far);
 		System.out.println("Starting index " + start);
 		System.out.println("Ending index " + end);
+	}
+
+	public int maxSubArray(final List<Integer> A) {
+		int maxEndingHere = A.get(0);
+		int maxSoFar = A.get(0);
+		for (int i = 1; i < A.size(); i++) {
+			maxEndingHere = Math.max(A.get(i), A.get(i) + maxEndingHere);
+			maxSoFar = Math.max(maxSoFar, maxEndingHere);
+		}
+		return maxSoFar;
 	}
 
 	// Driver code

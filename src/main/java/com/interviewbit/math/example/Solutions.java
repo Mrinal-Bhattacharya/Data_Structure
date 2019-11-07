@@ -95,25 +95,4 @@ public class Solutions {
 		return output;
 	}
 
-	int euclid_gcd(final int a, final int b) {
-		int dividend = a > b ? a : b;
-		int divisor = a < b ? a : b;
-		while (divisor != 0) {
-			final int remainder = dividend % divisor;
-			dividend = divisor;
-			divisor = remainder;
-		}
-		return dividend;
-	}
-
-	public int gcd(final int a, final int b) {
-		if (a == 0) {
-			return b;
-		}
-		return this.gcd(b % a, a);
-	}
-
-	public static void main(final String[] args) {
-		System.out.println(new Solutions().gcd(9, 6));
-	}
 }
