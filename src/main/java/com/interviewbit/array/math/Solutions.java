@@ -72,6 +72,71 @@ public class Solutions {
 		return maxSoFar;
 	}
 
+	public int maxArr(final ArrayList<Integer> A) {
+		int result = 0;
+		// Iterate through all pairs.
+		for (int i = 0; i < A.size(); i++) {
+			for (int j = i; j < A.size(); j++) {
+				result = Math.max(result, Math.abs(A.get(i) - A.get(j)) + Math.abs(i - j));
+			}
+		}
+		return result;
+	}
+
+	/*
+	 * f(i, j) = |A[i] - A[j]| + |i - j| can be written in 4 ways (Since we are
+	 * looking at max value, we don’t even care if the value becomes negative as
+	 * long as we are also covering the max value in some way).
+	 *
+	 * (A[i] + i) - (A[j] + j) -(A[i] - i) + (A[j] - j) (A[i] - i) - (A[j] - j)
+	 * (-A[i] - i) + (A[j] + j) = -(A[i] + i) + (A[j] + j)
+	 *
+	 * Note that case 1 and 4 are equivalent and so are case 2 and 3.
+	 *
+	 * We can construct two arrays with values: A[i] + i and A[i] - i. Then, for
+	 * above 2 cases, we find the maximum value possible. For that, we just have to
+	 * store minimum and maximum values of expressions A[i] + i and A[i] - i for all
+	 */
+	public int maxArrInterviewBit(final ArrayList<Integer> A) {
+		int max1 = Integer.MIN_VALUE;
+		int min1 = Integer.MAX_VALUE;
+		int max2 = Integer.MIN_VALUE;
+		int min2 = Integer.MAX_VALUE;
+
+		for (int i = 0; i < A.size(); i++) {
+
+			// Updating max and min variables
+			// as described in algorithm.
+			max1 = Math.max(max1, A.get(i) + i);
+			min1 = Math.min(min1, A.get(i) + i);
+			max2 = Math.max(max2, A.get(i) - i);
+			min2 = Math.min(min2, A.get(i) - i);
+		}
+
+		// Calculating maximum absolute difference.
+		return Math.max(max1 - min1, max2 - min2);
+	}
+
+	public ArrayList<Integer> repeatedNumber(final List<Integer> copy) {
+		final List<Integer> A = new ArrayList<>();
+		A.addAll(copy);
+		final ArrayList<Integer> out = new ArrayList<>();
+		for (int i = 0; i < A.size(); i++) {
+			final int abs = Math.abs(A.get(i));
+			if (A.get(abs - 1) > 0) {
+				A.set(abs - 1, -A.get(abs - 1));
+			} else {
+				out.add(abs);
+			}
+		}
+		for (int i = 0; i < A.size(); i++) {
+			if (A.get(i) > 0) {
+				out.add(i + 1);
+			}
+		}
+		return out;
+	}
+
 	// Driver code
 	public static void main(final String[] args) {
 		final ArrayList<Integer> vect = new ArrayList<>();
