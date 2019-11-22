@@ -3,7 +3,6 @@ package com.java.ds.basic.array;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -91,28 +90,6 @@ public class ArraySpec {
 		final int arr[] = { 1, 2, 2, 4 };
 		final int result = new ArraySolutions().countIncreasing(arr, arr.length);
 		Assertions.assertThat(result).isEqualTo(2);
-	}
-
-	public void reverse(final Stack<Integer> s) {
-		// int tmp = -1;
-		if (s.isEmpty()) {
-			return;
-		}
-
-		final int tmp = s.pop();
-		this.reverse(s);
-		this.add(s, tmp);
-		// s.insertElementAt(tmp, 0);
-	}
-
-	private void add(final Stack<Integer> s, final int tmp) {
-		if (s.isEmpty()) {
-			s.push(tmp);
-			return;
-		}
-		final int obj = s.pop();
-		this.add(s, tmp);
-		s.push(obj);
 	}
 
 	void printRepeating(final int arr[], final int size) {

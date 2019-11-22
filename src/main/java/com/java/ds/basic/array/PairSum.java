@@ -1,6 +1,8 @@
 package com.java.ds.basic.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class PairSum implements Comparable<PairSum> {
 	int first;
@@ -59,6 +61,16 @@ public class PairSum implements Comparable<PairSum> {
 				j--;
 			}
 		}
+	}
+
+	public ArrayList<Integer> wave(final ArrayList<Integer> A) {
+		Collections.sort(A);
+		for (int i = 0; i < (A.size() - 1); i += 2) {
+			final int temp = A.get(i);
+			A.set(i, A.get(i + 1));
+			A.set(i + 1, temp);
+		}
+		return A;
 	}
 
 	public static void main(final String[] args) {

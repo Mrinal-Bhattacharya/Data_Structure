@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Stack;
 
 public class ArraySolutions {
 
@@ -25,6 +26,27 @@ public class ArraySolutions {
 		return maxSpan;
 	}
 
+	public void reverse(final Stack<Integer> s) {
+		// int tmp = -1;
+		if (s.isEmpty()) {
+			return;
+		}
+
+		final int tmp = s.pop();
+		this.reverse(s);
+		this.add(s, tmp);
+		// s.insertElementAt(tmp, 0);
+	}
+
+	private void add(final Stack<Integer> s, final int tmp) {
+		if (s.isEmpty()) {
+			s.push(tmp);
+			return;
+		}
+		final int obj = s.pop();
+		this.add(s, tmp);
+		s.push(obj);
+	}
 	// 1) Since there are total n elements, maximum sum is n for both arrays.
 
 	// 2) Difference between two sums varies from -n to n. So there are total 2n
