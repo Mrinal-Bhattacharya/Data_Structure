@@ -38,6 +38,52 @@ public class Solutions {
 		return result;
 	}
 
+	public int findMin(final List<Integer> a) {
+		int low = 0, high = a.size() - 1;
+		while (low <= high) {
+			if (a.get(low) <= a.get(high)) {
+				return a.get(low);
+			}
+			final int mid = (low + high) / 2;
+			final int next = (mid + 1) % a.size();
+			final int prev = (mid - 1) % a.size();
+			if ((a.get(mid) <= a.get(next)) && (a.get(mid) <= a.get(prev))) {
+				return a.get(mid);
+			}
+			if (a.get(mid) <= a.get(high)) {
+				high = mid - 1;
+			}
+			if (a.get(mid) >= a.get(low)) {
+				low = mid + 1;
+			}
+		}
+		return -1;
+	}
+
+	int circularArraySearch(final List<Integer> a, final int x) {
+		int low = 0, high = a.size() - 1;
+		while (low <= high) {
+			final int mid = (low + high) / 2;
+			if (a.get(mid) == x) {
+				return mid;
+			}
+			if (a.get(mid) <= a.get(high)) {
+				if ((x > a.get(mid)) && (x <= a.get(high))) {
+					low = mid + 1;
+				} else {
+					high = mid - 1;
+				}
+			} else {
+				if ((x >= a.get(low)) && (x < a.get(mid))) {
+					high = mid - 1;
+				} else {
+					low = mid + 1;
+				}
+			}
+		}
+		return -1;
+	}
+
 	public static void main(final String[] args) {
 		final List<Integer> A = new ArrayList<>();
 		A.add(1);
