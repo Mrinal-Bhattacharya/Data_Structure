@@ -1,16 +1,6 @@
 package com.interviewbit.math.baseconversion;
 
-public class Solutions {
-
-	public int titleToNumber(final String A) {
-		int result = 0;
-		for (int i = 0; i < A.length(); i++) {
-			result *= 26;
-			result += (A.charAt(i) - 'A') + 1;
-		}
-		return result;
-	}
-
+public class ExcelColumnTitle {
 	public String convertToTitle(int A) {
 		String str = "";
 
@@ -27,5 +17,4 @@ public class Solutions {
 		}
 		return str;
 	}
-
 }

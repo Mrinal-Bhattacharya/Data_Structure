@@ -3,7 +3,7 @@ package com.interviewbit.math.numberencoding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solutions {
+public class RearrangeArray {
 	public void arrange(final List<Integer> a) {
 		// First step: Increase all values by (arr[arr[i]]%n)*n
 		final int n = a.size();
@@ -37,6 +37,6 @@ public class Solutions {
 		a.add(1);
 		a.add(3);
 
-		new Solutions().arrange(a);
+		new RearrangeArray().arrange(a);
 	}
 }

@@ -3,7 +3,7 @@ package com.interviewbit.array.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solutions {
+public class SpiralOrderMatrixI {
 	public static void main(final String[] args) {
 		final List<ArrayList<Integer>> array = new ArrayList<>();
 		final ArrayList<Integer> sublist = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Solutions {
 		sublist2.add(5);
 		sublist2.add(6);
 		array.add(sublist2);
-		new Solutions().spiralOrder(array);
+		new SpiralOrderMatrixI().spiralOrder(array);
 		System.out.println(array);
 	}
 

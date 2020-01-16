@@ -8,34 +8,6 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Solutions {
-	int euclid_gcd(final int a, final int b) {
-		int dividend = a > b ? a : b;
-		int divisor = a < b ? a : b;
-		while (divisor != 0) {
-			final int remainder = dividend % divisor;
-			dividend = divisor;
-			divisor = remainder;
-		}
-		return dividend;
-	}
-
-	public int gcd(final int a, final int b) {
-		if (a == 0) {
-			return b;
-		}
-		return this.gcd(b % a, a);
-	}
-
-	public int trailingZeroes(final int A) {
-		// Initialize result
-		int count = 0;
-		// Keep dividing n by powers
-		// of 5 and update count
-		for (int i = 5; (A / i) >= 1; i *= 5) {
-			count += A / i;
-		}
-		return count;
-	}
 
 	public int findRank(final String s) {
 		final int m = 1000003;
@@ -86,28 +58,6 @@ public class Solutions {
 			result = (before * fact) + result;
 		}
 		System.out.println(result);
-	}
-
-	public static void main(final String[] args) {
-		// new Solutions().rank("SPARK");
-		System.out.println(new Solutions().rankRep("sadasdsasassasas"));
-		final SortedSet<Character> set = new TreeSet<>();
-		set.add('A');
-		set.add('B');
-		// set.add('C');
-		set.add('D');
-		set.add('E');
-		set.add('F');
-		System.out.println(set.headSet('C'));
-
-		final SortedSet<Integer> set1 = new TreeSet<>();
-		set1.add(1);
-		set1.add(2);
-		// set.add('C');
-		set1.add(4);
-		set1.add(5);
-		set1.add(6);
-		System.out.println(set1.headSet(3));
 	}
 
 	public int rankRep(final String A) {
@@ -162,13 +112,6 @@ public class Solutions {
 			}
 		}
 		return result;
-	}
-
-	public int cpFact(int A, final int B) {
-		while (this.gcd(A, B) != 1) {
-			A = A / this.gcd(A, B);
-		}
-		return A;
 	}
 
 }
