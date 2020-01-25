@@ -2,7 +2,6 @@ package com.java.ds.basic.tree;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;

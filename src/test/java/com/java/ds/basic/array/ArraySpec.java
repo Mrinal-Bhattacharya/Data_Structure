@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.assertj.core.api.Assertions;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ArraySpec {
@@ -64,6 +65,7 @@ public class ArraySpec {
 		Assertions.assertThat(result).isEqualTo(4);
 	}
 
+	@Ignore
 	@Test
 	public void fixPoint() {
 		final int arr[] = { -10, -1, 0, 3, 10, 11, 30, 50, 100 };
