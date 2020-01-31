@@ -1,16 +1,12 @@
 package com.java.graph;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Graph {
 	public final int V;
-	public final List<Integer> adj[];
-	int intime[];
-	int outtime[];
+    public final List<Integer>[] adj;
+    int[] intime;
+    int[] outtime;
 	int timer = 0;
 
 	public Graph(final int v) {
@@ -23,8 +19,15 @@ public class Graph {
 		}
 	}
 
-	void addEdge(final int s, final int t) {
-		this.adj[s].add(t);
+    // Driver method to
+    public static void main(final String[] args) {
+        final Graph g = new Graph(5);
+        g.printJumping(40);
+        Graph.motherVertics();
+        Graph.path();
+        Graph.bothTypeOfTraversal();
+        Graph.displaytopologicalSort();
+        Graph.dfsItr();
 	}
 
 	void BFS(final int sourceVertex) {
@@ -216,15 +219,8 @@ public class Graph {
 		}
 	}
 
-	// Driver method to
-	public static void main(final String args[]) {
-		final Graph g = new Graph(5);
-		g.printJumping(40);
-		Graph.motherVertics();
-		Graph.path();
-		Graph.bothTypeOfTraversal();
-		Graph.displaytopologicalSort();
-		Graph.dfsItr();
+    public void addEdge(final int s, final int t) {
+        this.adj[s].add(t);
 	}
 
 	private static void dfsItr() {

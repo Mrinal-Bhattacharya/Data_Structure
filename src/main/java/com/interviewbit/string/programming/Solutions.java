@@ -3,11 +3,8 @@ package com.interviewbit.string.programming;
 public class Solutions {
 	public boolean isVowel(char a) {
 		a = Character.toLowerCase(a);
-		if ((a == 'a') || (a == 'e') || (a == 'i') || (a == 'o') || (a == 'u')) {
-			return true;
-		}
-		return false;
-	}
+        return (a == 'a') || (a == 'e') || (a == 'i') || (a == 'o') || (a == 'u');
+    }
 
 	public int solve(final String A) {
 		int sum = 0;
@@ -41,11 +38,8 @@ public class Solutions {
 			i++;
 			j--;
 		}
-		if (i < j) {
-			return false;
-		}
-		return true;
-	}
+        return i >= j;
+    }
 
 	public int solveMinCharPalindrom(String A) {
 		int cnt = 0;

@@ -96,10 +96,10 @@ public class Solutions {
 	}
 
 	public String intToRoman(final int A) {
-		final String m[] = { "", "M", "MM", "MMM" };
-		final String c[] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
-		final String x[] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
-		final String i[] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+        final String[] m = {"", "M", "MM", "MMM"};
+        final String[] c = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        final String[] x = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        final String[] i = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
 
 		// Converting to roman
 		final String thousands = m[A / 1000];
@@ -213,7 +213,7 @@ public class Solutions {
 
 		// will keep the result number in vector
 		// in reverse order
-		final int result[] = new int[len1 + len2];
+        final int[] result = new int[len1 + len2];
 
 		// Below two indexes are used to
 		// find positions in result.

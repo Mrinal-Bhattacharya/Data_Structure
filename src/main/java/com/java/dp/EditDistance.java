@@ -47,7 +47,7 @@ public class EditDistance {
 	static int editDistDP(final String str1, final String str2, final int m, final int n) {
 		// Create a table to store results of subproblems
 		// Plus one because for empty.
-		final int dp[][] = new int[m + 1][n + 1];
+        final int[][] dp = new int[m + 1][n + 1];
 
 		// Fill d[][] in bottom up manner
 		for (int i = 0; i <= m; i++) {

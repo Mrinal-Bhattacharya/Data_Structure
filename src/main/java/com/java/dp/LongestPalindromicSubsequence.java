@@ -24,7 +24,7 @@ public class LongestPalindromicSubsequence {
 	static int lps(final String seq) {
 		final int n = seq.length();
 		int i, j, cl;
-		final int L[][] = new int[n][n]; // Create a table to store results of subproblems
+        final int[][] L = new int[n][n]; // Create a table to store results of subproblems
 
 		// Strings of length 1 are palindrome of lentgh 1
 		for (i = 0; i < n; i++) {

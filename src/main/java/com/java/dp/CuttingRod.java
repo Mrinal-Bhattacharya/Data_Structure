@@ -1,7 +1,7 @@
 package com.java.dp;
 
 public class CuttingRod {
-	static int cutRod(final int price[], final int n) {
+    static int cutRod(final int[] price, final int n) {
 		if (n <= 0) {
 			return 0;
 		}
@@ -16,8 +16,8 @@ public class CuttingRod {
 		return max_val;
 	}
 
-	static int cutRodDp(final int price[], final int n) {
-		final int val[] = new int[n + 1];
+    static int cutRodDp(final int[] price, final int n) {
+        final int[] val = new int[n + 1];
 		val[0] = 0;
 
 		// Build the table val[] in bottom up manner and return
@@ -33,8 +33,8 @@ public class CuttingRod {
 		return val[n];
 	}
 
-	public static void main(final String args[]) {
-		final int arr[] = new int[] { 1, 5, 8, 9, 10, 17, 17, 20 };
+    public static void main(final String[] args) {
+        final int[] arr = new int[]{1, 5, 8, 9, 10, 17, 17, 20};
 		final int size = arr.length;
 		System.out.println("Maximum Obtainable Value is " + CuttingRod.cutRod(arr, size));
 

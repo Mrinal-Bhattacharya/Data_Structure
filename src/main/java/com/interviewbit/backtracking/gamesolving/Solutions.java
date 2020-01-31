@@ -3,16 +3,9 @@ package com.interviewbit.backtracking.gamesolving;
 import java.util.ArrayList;
 
 public class Solutions {
-	public ArrayList<ArrayList<String>> solveNQueens(final int a) {
-		final String board[][] = new String[a][a];
-		for (int i = 0; i < a; i++) {
-			for (int j = 0; j < a; j++) {
-				board[i][j] = ".";
-			}
-		}
-		final ArrayList<ArrayList<String>> result = new ArrayList<>();
-		this.solveNQueensUtil(board, a, 0, result);
-		return result;
+    public static void main(final String[] args) throws Exception {
+        final Solutions nq = new Solutions();
+        System.out.println(nq.solveNQueens(4));
 	}
 
 	private void solveNQueensUtil(final String[][] board, final int a, final int col,
@@ -45,7 +38,19 @@ public class Solutions {
 		}
 	}
 
-	boolean isSafe(final String board[][], final int a, final int row, final int col) {
+    public ArrayList<ArrayList<String>> solveNQueens(final int a) {
+        final String[][] board = new String[a][a];
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < a; j++) {
+                board[i][j] = ".";
+            }
+        }
+        final ArrayList<ArrayList<String>> result = new ArrayList<>();
+        this.solveNQueensUtil(board, a, 0, result);
+        return result;
+    }
+
+    boolean isSafe(final String[][] board, final int a, final int row, final int col) {
 		int i, j;
 		/* Check this row on left side */
 		for (i = 0; i < col; i++) {
@@ -66,29 +71,6 @@ public class Solutions {
 			}
 		}
 		return true;
-	}
-
-	public void solveSudoku(final ArrayList<ArrayList<Character>> a) {
-		final int n = a.size();
-		final int bd[][] = new int[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if (a.get(i).get(j) == '.') {
-					bd[i][j] = 0;
-					continue;
-				}
-				bd[i][j] = Character.getNumericValue(a.get(i).get(j));
-			}
-		}
-		final int row = 0, col = 0;
-		this.solveSudokuHelper(bd, n, row, col);
-
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				final char c = (char) (bd[i][j] + '0');
-				a.get(i).set(j, c);
-			}
-		}
 	}
 
 	private boolean solveSudokuHelper(final int[][] bd, final int n, final int row, final int col) {
@@ -139,8 +121,26 @@ public class Solutions {
 		return true;
 	}
 
-	public static void main(final String args[]) throws Exception {
-		final Solutions nq = new Solutions();
-		System.out.println(nq.solveNQueens(4));
+    public void solveSudoku(final ArrayList<ArrayList<Character>> a) {
+        final int n = a.size();
+        final int[][] bd = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a.get(i).get(j) == '.') {
+                    bd[i][j] = 0;
+                    continue;
+                }
+                bd[i][j] = Character.getNumericValue(a.get(i).get(j));
+            }
+        }
+        final int row = 0, col = 0;
+        this.solveSudokuHelper(bd, n, row, col);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                final char c = (char) (bd[i][j] + '0');
+                a.get(i).set(j, c);
+            }
+        }
 	}
 }

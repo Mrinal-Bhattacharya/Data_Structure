@@ -41,8 +41,8 @@ public class Solutions {
 		return this.minStack.peek();
 	}
 
-	Stack<Integer> s = new Stack<>();;
-	Integer minEle;
+    Stack<Integer> s = new Stack<>();
+    Integer minEle;
 
 	// Prints minimum element of MyStack
 	void getMin2() {
@@ -75,7 +75,7 @@ public class Solutions {
 	}
 
 	// Removes the top element from MyStack
-	// (2*minEle – y)
+	// (2*minEle ï¿½ y)
 	void pop2() {
 		if (this.s.isEmpty()) {
 			System.out.println("Stack is empty");
@@ -105,7 +105,7 @@ public class Solutions {
 		}
 
 		// If new number is less than original minEle
-		// (2*x – minEle)
+		// (2*x ï¿½ minEle)
 		if (x < this.minEle) {
 			this.s.push((2 * x) - this.minEle);
 			this.minEle = x;

@@ -35,7 +35,7 @@ public class Solutions {
 			if (map.containsKey(remainder)) {
 				final int beg = map.get(remainder);
 				final String part1 = result.substring(0, beg);
-				final String part2 = result.substring(beg, result.length());
+                final String part2 = result.substring(beg);
 				result = part1 + "(" + part2 + ")";
 				return result;
 			}
@@ -64,7 +64,7 @@ public class Solutions {
 		a = (a % b) * 10;
 		while (!map.containsKey(a)) {
 			map.put(a, res.length());
-			res.append(String.valueOf(a / b));
+            res.append(a / b);
 			a = (a % b) * 10;
 			if (a == 0) {
 				return res.toString();

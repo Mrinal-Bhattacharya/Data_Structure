@@ -149,8 +149,8 @@ public class Solutions {
 		Collections.sort(l, new Comparator<String>() {
 			@Override
 			public int compare(final String o1, final String o2) {
-				final String a1[] = o1.split("[.]");
-				final String a2[] = o2.split("[.]");
+                final String[] a1 = o1.split("[.]");
+                final String[] a2 = o2.split("[.]");
 
 				int result = -1;
 				for (int i = 0; (i < 4) && (result != 0); i++) {
@@ -164,7 +164,7 @@ public class Solutions {
 	}
 
 	private static boolean isValid2(final String ip) {
-		final String a[] = ip.split("[.]");
+        final String[] a = ip.split("[.]");
 		for (final String s : a) {
 			final int i = Integer.parseInt(s);
 			if ((s.length() > 3) || (i < 0) || (i > 255)) {
@@ -208,12 +208,8 @@ public class Solutions {
 	}
 
 	public static boolean isValid3(final String s) {
-		if ((s.length() > 3) || s.isEmpty() || ((s.charAt(0) == '0') && (s.length() > 1))
-				|| (Integer.parseInt(s) > 255)) {
-			return false;
-		}
-		return true;
-	}
+        return (s.length() <= 3) && !s.isEmpty() && ((s.charAt(0) != '0') || (s.length() <= 1)) && (Integer.parseInt(s) <= 255);
+    }
 
 	public static void main(final String[] args) {
 		new Solutions();

@@ -29,11 +29,8 @@ public class Solutions {
 
 	public boolean checkKthBit(final long A, final int k) {
 		final long c = A & (1 << (k - 1));
-		if (c != 0) {
-			return true;
-		}
-		return false;
-	}
+        return c != 0;
+    }
 
 	public long setKthBit(final long A, final int k) {
 		return A | (1 << (k - 1));

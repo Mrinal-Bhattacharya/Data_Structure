@@ -16,7 +16,7 @@ public class Solutions {
 			}
 		}
 
-		final StringBuilder sb = new StringBuilder("");
+        final StringBuilder sb = new StringBuilder();
 		while (!stack.isEmpty()) {
 			sb.insert(0, stack.pop());
 			sb.insert(0, "/");

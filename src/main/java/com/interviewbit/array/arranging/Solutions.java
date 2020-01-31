@@ -1,11 +1,6 @@
 package com.interviewbit.array.arranging;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class Solutions {
 	public void rotate(final ArrayList<ArrayList<Integer>> a) {
@@ -105,7 +100,7 @@ public class Solutions {
 	}
 
 	// Driver code
-	public static void main(final String args[]) {
+    public static void main(final String[] args) {
 		final Integer[] arr = new Integer[] { 5, 9, 6, 8, 6, 4, 6, 9, 5, 4, 9 };
 		System.out.print(new Solutions().maxSpecialProduct(Arrays.asList(arr)));
 	}

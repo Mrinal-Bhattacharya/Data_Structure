@@ -2,7 +2,7 @@ package com.java.dp;
 
 public class Knapsack {
 
-	static int knapSack(final int W, final int wt[], final int val[], final int n) {
+    static int knapSack(final int W, final int[] wt, final int[] val, final int n) {
 		// Base Case
 		if ((n == 0) || (W == 0)) {
 			return 0;
@@ -18,9 +18,9 @@ public class Knapsack {
 		}
 	}
 
-	static int knapSackDp(final int W, final int wt[], final int val[], final int n) {
+    static int knapSackDp(final int W, final int[] wt, final int[] val, final int n) {
 		int i, w;
-		final int K[][] = new int[n + 1][W + 1];
+        final int[][] K = new int[n + 1][W + 1];
 
 		// Build table K[][] in bottom up manner
 		for (i = 0; i <= n; i++) {
@@ -39,9 +39,9 @@ public class Knapsack {
 	}
 
 	// Driver program to test above function
-	public static void main(final String args[]) {
-		final int val[] = new int[] { 60, 100, 120 };
-		final int wt[] = new int[] { 1, 2, 4 };
+    public static void main(final String[] args) {
+        final int[] val = new int[]{60, 100, 120};
+        final int[] wt = new int[]{1, 2, 4};
 		final int W = 5;
 		final int n = val.length;
 		System.out.println(Knapsack.knapSackDp(W, wt, val, n));

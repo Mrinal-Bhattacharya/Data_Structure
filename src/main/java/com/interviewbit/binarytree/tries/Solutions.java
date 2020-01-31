@@ -1,12 +1,7 @@
 package com.interviewbit.binarytree.tries;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class Solutions {
 	public ArrayList<Integer> solve(final String A, final ArrayList<String> B) {
@@ -96,6 +91,6 @@ public class Solutions {
 		solutions.insert("thery", root);
 		solutions.insert("therys", root);
 		solutions.delete("therys", root);
-		System.out.println("");
+		System.out.println();
 	}
 }

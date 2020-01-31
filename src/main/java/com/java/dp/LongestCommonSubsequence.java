@@ -13,7 +13,7 @@ public class LongestCommonSubsequence {
 	}
 
 	static int lcsDP(final char[] X, final char[] Y, final int m, final int n) {
-		final int L[][] = new int[m + 1][n + 1];
+        final int[][] L = new int[m + 1][n + 1];
 
 		/*
 		 * Following steps build L[m+1][n+1] in bottom up fashion. Note that L[i][j]
@@ -34,9 +34,9 @@ public class LongestCommonSubsequence {
 		}
 		/*
 		 * For printing 2) Traverse the 2D array starting from L[m][n]. Do following for
-		 * every cell L[i][j] …..a) If characters (in X and Y) corresponding to L[i][j]
+		 * every cell L[i][j] ï¿½..a) If characters (in X and Y) corresponding to L[i][j]
 		 * are same (Or X[i-1] == Y[j-1]), final then include this final character as
-		 * part of LCS. …..b) Else compare values of L[i-1][j] and L[i][j-1] and final
+		 * part of LCS. ï¿½..b) Else compare values of L[i-1][j] and L[i][j-1] and final
 		 * go in direction final of greater value.
 		 */
 		int i = m, j = n;

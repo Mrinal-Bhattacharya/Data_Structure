@@ -51,7 +51,7 @@ public class SegmentTree {
 	}
 
 	public static void main(final String[] args) {
-		final int nums[] = { 1, 3, 5, 7, 9, 11 };
+		final int[] nums = {1, 3, 5, 7, 9, 11};
 		final SegmentTree segmentTree = new SegmentTree();
 		segmentTree.buildTree(nums);
 		for (final int i : segmentTree.tree) {
@@ -69,7 +69,7 @@ public class SegmentTree {
 	static int[] st;
 
 	static void constructTree() {
-		final int nums[] = { 1, 3, 5, 7, 9, 11 };
+		final int[] nums = {1, 3, 5, 7, 9, 11};
 		final int x = (int) (Math.ceil(Math.log(nums.length) / Math.log(2)));
 
 		// Maximum size of segment tree
@@ -79,7 +79,7 @@ public class SegmentTree {
 		SegmentTree.constructSTUtil(nums, 0, nums.length - 1, 0);
 	}
 
-	static int constructSTUtil(final int arr[], final int start, final int end, final int curr) {
+	static int constructSTUtil(final int[] arr, final int start, final int end, final int curr) {
 		// If there is one element in array, store it in current node of
 		// segment tree and return
 		if (start == end) {

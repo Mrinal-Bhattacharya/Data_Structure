@@ -20,7 +20,7 @@ public class StronglyConnectedComponent {
 		final Stack stack = new Stack();
 
 		// Mark all the vertices as not visited (For first DFS)
-		boolean visited[] = new boolean[V];
+        boolean[] visited = new boolean[V];
 		for (int i = 0; i < V; i++) {
 			if (visited[i] == false) {
 				this.fillOrder(i, visited, graph, stack);

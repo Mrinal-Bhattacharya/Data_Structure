@@ -1,10 +1,6 @@
 package com.java.ds.basic.array;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class ArraySolutions {
 
@@ -57,33 +53,7 @@ public class ArraySolutions {
 
 	// Using Auxiliary Array
 
-	public int longestCommonSumSpan2(final int[] arr1, final int[] arr2, final int length) {
-		int maxSpan = 0;
-		int prevSum1 = 0;
-		int prevSum2 = 0;
-		final int diff[] = new int[(2 * length) + 1];
-		for (int i = 0; i < diff.length; i++) {
-			diff[i] = -1;
-		}
-		for (int i = 0; i < length; i++) {
-			prevSum1 += arr1[i];
-			prevSum2 += arr2[i];
-			final int curr_diff = prevSum1 - prevSum2;
-			final int diff_index = length + curr_diff;
-			if (curr_diff == 0) {
-				maxSpan = i + 1;
-			} else if (diff[diff_index] == -1) {
-				diff[diff_index] = i;
-			} else {
-				final int len = i - diff[diff_index];
-				if (len > maxSpan) {
-					maxSpan = len;
-				}
-			}
-
-		}
-		return maxSpan;
-	}
+    static int[] arr = new int[]{1, 5, 7, -1, 5};
 
 	// Union of two sorted arrays
 	public List<Integer> union(final int[] arr1, final int[] arr2, final int arr1Length, final int arr2Length) {
@@ -131,17 +101,19 @@ public class ArraySolutions {
 		return result;
 	}
 
-	public void test() {
-		final int a = 61;
-		final int n = 6;
-		final int d = 1;
-		final int b[] = { 62, 66, 63, 64, 65 };
-		int sum = 0;
-		for (int i = 0; i < b.length; i++) {
-			sum += b[i];
-		}
-		final int actual = (n / 2) * (((2 * a) + ((n - 1) * d)));
-		System.out.println(actual - sum);
+    static int cutRod(final int[] price, final int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        int max_val = Integer.MIN_VALUE;
+
+        // Recursively cut the rod in different pieces and
+        // compare different configurations
+        for (int i = 0; i < n; i++) {
+            max_val = Math.max(max_val, price[i] + ArraySolutions.cutRod(price, n - i - 1));
+        }
+
+        return max_val;
 	}
 
 	public int missingNo(final int[] arr1, final int n) {
@@ -155,47 +127,35 @@ public class ArraySolutions {
 		return total;
 	}
 
-	public int minDist(final int arr[], final int x, final int y) {
-		int min_dist = Integer.MAX_VALUE;
-		int i = 0;
-		int prev = 0;
-		for (; i < arr.length; i++) {
-			if ((arr[i] == x) || (arr[i] == y)) {
-				prev = i;
-				break;
-			}
-		}
-		for (; i < arr.length; i++) {
-			if ((arr[i] == x) || (arr[i] == y)) {
-				if (arr[i] != arr[prev]) {
-					if (min_dist > (i - prev)) {
-						min_dist = i - prev;
-					}
-				}
-				prev = i;
-			}
-		}
-		return min_dist;
-	}
+    // Driver method to test the above function
+    public static void main(final String[] args) {
 
-	public int mooreMajorityAlgo(final int[] arr) {
-		int m = 0, i = 0;
-		System.out.println(arr);
-		for (int x = 0; x < arr.length; x++) {
-			System.out.print(" M " + m);
-			System.out.print(" I " + i);
-			System.out.print(" X " + x);
-			if (i == 0) {
-				m = x;
-				i = 1;
-			} else if (arr[m] == arr[x]) {
-				i++;
-			} else {
-				i--;
+        // System.out.println("Count of pairs is " +
+        // ArraySolutions.getPairsCount(ArraySolutions.arr.length, sum));
+        final int[] arr = {1, 6, 2, 3, 1, 3, 6, 6};
+        ArraySolutions.printRepeating(arr, 8);
+        ArraySolutions.printFirstRepeating(arr);
+    }
+
+    static void printRepeating(final int[] arr, final int n) {
+        // First check all the values that are
+        // present in an array then go to that
+        // values as indexes and increment by
+        // the size of array
+        for (int i = 0; i < n; i++) {
+            final int index = arr[i] % n;
+            arr[index] += n;
+        }
+
+        // Now check which value exists more
+        // than once by dividing with the size
+        // of array
+        for (int i = 0; i < n; i++) {
+            if ((arr[i] / n) > 1) {
+                System.out.println(i);
+
 			}
-			System.out.println("");
 		}
-		return m;
 	}
 
 	// https://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
@@ -225,21 +185,21 @@ public class ArraySolutions {
 		}
 	}
 
-	// https://www.geeksforgeeks.org/find-a-fixed-point-in-a-given-array/
-	public int fixPointByBinarySearch(final int arr[], final int low, final int high) {
-		if (high > low) {
-			final int mid = low + ((high - low) / 2);
-			if (mid == arr[mid]) {
-				return mid;
-			}
-			if (mid < arr[mid]) {
-				return this.fixPointByBinarySearch(arr, low, mid + 1);
+    static void printFirstRepeating(final int[] arr) {
+        // Creates an empty hashset
+        final HashSet<Integer> set = new HashSet<>();
+
+        // Traverse the input array from right to left
+        for (int i = arr.length - 1; i >= 0; i--) {
+            // If element is already in hash set, update min
+            if (set.contains(arr[i])) {
+                System.out.println("The first repeating element is " + arr[i]);
+                return;
 			} else {
-				return this.fixPointByBinarySearch(arr, mid + 1, high);
+                set.add(arr[i]);
 			}
 		}
-
-		return -1;
+        System.out.println("There are no repeating elements");
 	}
 
 	// https://www.geeksforgeeks.org/replace-every-element-with-the-greatest-on-right-side/
@@ -285,31 +245,33 @@ public class ArraySolutions {
 		return cnt;
 	}
 
-	public int countIncreasingLen(final int arr[], final int n) {
-		int cnt = 0; // Initialize result
-
-		// Initialize length of current increasing
-		// subarray
-		int len = 1;
-
-		// Traverse through the array
-		for (int i = 0; i < (n - 1); ++i) {
-			// If arr[i+1] is greater than arr[i],
-			// then increment length
-			if (arr[i + 1] > arr[i]) {
-				len++;
+    public int longestCommonSumSpan2(final int[] arr1, final int[] arr2, final int length) {
+        int maxSpan = 0;
+        int prevSum1 = 0;
+        int prevSum2 = 0;
+        final int[] diff = new int[(2 * length) + 1];
+        for (int i = 0; i < diff.length; i++) {
+            diff[i] = -1;
+        }
+        for (int i = 0; i < length; i++) {
+            prevSum1 += arr1[i];
+            prevSum2 += arr2[i];
+            final int curr_diff = prevSum1 - prevSum2;
+            final int diff_index = length + curr_diff;
+            if (curr_diff == 0) {
+                maxSpan = i + 1;
+            }
+            else if (diff[diff_index] == -1) {
+                diff[diff_index] = i;
 			} else {
-				cnt += (((len - 1) * len) / 2);
-				len = 1;
-			}
-		}
+                final int len = i - diff[diff_index];
+                if (len > maxSpan) {
+                    maxSpan = len;
+                }
+            }
 
-		// If last length is more than 1
-		if (len > 1) {
-			cnt += (((len - 1) * len) / 2);
 		}
-
-		return cnt;
+        return maxSpan;
 	}
 
 	public void spiralPrint(int endingRowIndex, int endingColumnIndex, final int[][] arr) {
@@ -343,55 +305,63 @@ public class ArraySolutions {
 
 	}
 
-	int search(final int arr[], final int l, final int h, final int key) {
-		if (l > h) {
-			return -1;
-		}
+    public void test() {
+        final int a = 61;
+        final int n = 6;
+        final int d = 1;
+        final int[] b = {62, 66, 63, 64, 65};
+        int sum = 0;
+        for (int i = 0; i < b.length; i++) {
+            sum += b[i];
+        }
+        final int actual = (n / 2) * (((2 * a) + ((n - 1) * d)));
+        System.out.println(actual - sum);
+    }
 
-		final int mid = (l + h) / 2;
-		if (arr[mid] == key) {
-			return mid;
-		}
-
-		/* If arr[l...mid] is sorted */
-		if (arr[l] <= arr[mid]) {
-			/*
-			 * As this subarray is sorted, we can quickly check if key lies in half or other
-			 * half
-			 */
-			if ((key >= arr[l]) && (key <= arr[mid])) {
-				return this.search(arr, l, mid - 1, key);
+    public int minDist(final int[] arr, final int x, final int y) {
+        int min_dist = Integer.MAX_VALUE;
+        int i = 0;
+        int prev = 0;
+        for (; i < arr.length; i++) {
+            if ((arr[i] == x) || (arr[i] == y)) {
+                prev = i;
+                break;
 			}
-
-			return this.search(arr, mid + 1, h, key);
 		}
+        for (; i < arr.length; i++) {
+            if ((arr[i] == x) || (arr[i] == y)) {
+                if (arr[i] != arr[prev]) {
+                    if (min_dist > (i - prev)) {
+                        min_dist = i - prev;
+                    }
+                }
+                prev = i;
+            }
+        }
+        return min_dist;
+    }
 
-		/*
-		 * If arr[l..mid] is not sorted, then arr[mid... r] must be sorted
-		 */
-		if ((key >= arr[mid]) && (key <= arr[h])) {
-			return this.search(arr, mid + 1, h, key);
-		}
-
-		return this.search(arr, l, mid - 1, key);
-	}
-
-	static int cutRod(final int price[], final int n) {
-		if (n <= 0) {
-			return 0;
-		}
-		int max_val = Integer.MIN_VALUE;
-
-		// Recursively cut the rod in different pieces and
-		// compare different configurations
-		for (int i = 0; i < n; i++) {
-			max_val = Math.max(max_val, price[i] + ArraySolutions.cutRod(price, n - i - 1));
-		}
-
-		return max_val;
-	}
-
-	static int arr[] = new int[] { 1, 5, 7, -1, 5 };
+    public int mooreMajorityAlgo(final int[] arr) {
+        int m = 0, i = 0;
+        System.out.println(arr);
+        for (int x = 0; x < arr.length; x++) {
+            System.out.print(" M " + m);
+            System.out.print(" I " + i);
+            System.out.print(" X " + x);
+            if (i == 0) {
+                m = x;
+                i = 1;
+            }
+            else if (arr[m] == arr[x]) {
+                i++;
+            }
+            else {
+                i--;
+            }
+            System.out.println();
+        }
+        return m;
+    }
 
 	// Returns number of pairs in arr[0..n-1] with sum equal
 	// to 'sum'
@@ -430,51 +400,81 @@ public class ArraySolutions {
 		return twice_count / 2;
 	}
 
-	// Driver method to test the above function
-	public static void main(final String[] args) {
-
-		// System.out.println("Count of pairs is " +
-		// ArraySolutions.getPairsCount(ArraySolutions.arr.length, sum));
-		final int[] arr = { 1, 6, 2, 3, 1, 3, 6, 6 };
-		ArraySolutions.printRepeating(arr, 8);
-		ArraySolutions.printFirstRepeating(arr);
-	}
-
-	static void printRepeating(final int arr[], final int n) {
-		// First check all the values that are
-		// present in an array then go to that
-		// values as indexes and increment by
-		// the size of array
-		for (int i = 0; i < n; i++) {
-			final int index = arr[i] % n;
-			arr[index] += n;
-		}
-
-		// Now check which value exists more
-		// than once by dividing with the size
-		// of array
-		for (int i = 0; i < n; i++) {
-			if ((arr[i] / n) > 1) {
-				System.out.println(i);
-
-			}
-		}
-	}
-
-	static void printFirstRepeating(final int arr[]) {
-		// Creates an empty hashset
-		final HashSet<Integer> set = new HashSet<>();
-
-		// Traverse the input array from right to left
-		for (int i = arr.length - 1; i >= 0; i--) {
-			// If element is already in hash set, update min
-			if (set.contains(arr[i])) {
-				System.out.println("The first repeating element is " + arr[i]);
-				return;
+    // https://www.geeksforgeeks.org/find-a-fixed-point-in-a-given-array/
+    public int fixPointByBinarySearch(final int[] arr, final int low, final int high) {
+        if (high > low) {
+            final int mid = low + ((high - low) / 2);
+            if (mid == arr[mid]) {
+                return mid;
+            }
+            if (mid < arr[mid]) {
+                return this.fixPointByBinarySearch(arr, low, mid + 1);
 			} else {
-				set.add(arr[i]);
-			}
-		}
-		System.out.println("There are no repeating elements");
+                return this.fixPointByBinarySearch(arr, mid + 1, high);
+            }
+        }
+
+        return -1;
+    }
+
+    public int countIncreasingLen(final int[] arr, final int n) {
+        int cnt = 0; // Initialize result
+
+        // Initialize length of current increasing
+        // subarray
+        int len = 1;
+
+        // Traverse through the array
+        for (int i = 0; i < (n - 1); ++i) {
+            // If arr[i+1] is greater than arr[i],
+            // then increment length
+            if (arr[i + 1] > arr[i]) {
+                len++;
+            }
+            else {
+                cnt += (((len - 1) * len) / 2);
+                len = 1;
+            }
+        }
+
+        // If last length is more than 1
+        if (len > 1) {
+            cnt += (((len - 1) * len) / 2);
+        }
+
+        return cnt;
+    }
+
+    int search(final int[] arr, final int l, final int h, final int key) {
+        if (l > h) {
+            return -1;
+        }
+
+        final int mid = (l + h) / 2;
+        if (arr[mid] == key) {
+            return mid;
+        }
+
+        /* If arr[l...mid] is sorted */
+        if (arr[l] <= arr[mid]) {
+            /*
+             * As this subarray is sorted, we can quickly check if key lies in half or other
+             * half
+             */
+            if ((key >= arr[l]) && (key <= arr[mid])) {
+                return this.search(arr, l, mid - 1, key);
+            }
+
+            return this.search(arr, mid + 1, h, key);
+        }
+
+        /*
+         * If arr[l..mid] is not sorted, then arr[mid... r] must be sorted
+         */
+        if ((key >= arr[mid]) && (key <= arr[h])) {
+            return this.search(arr, mid + 1, h, key);
+        }
+
+        return this.search(arr, l, mid - 1, key);
 	}
 }

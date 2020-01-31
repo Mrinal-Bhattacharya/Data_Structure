@@ -10,7 +10,7 @@ public class StackUtil {
 	 * example ababXbaba). Check string is palindrome.
 	 */
 	public boolean isPalindrome(final String inputStr) {
-		final char inputChar[] = inputStr.toCharArray();
+        final char[] inputChar = inputStr.toCharArray();
 		final Stack<Character> stack = new Stack<>();
 		int i = 0;
 		while (inputChar[i] != 'X') {

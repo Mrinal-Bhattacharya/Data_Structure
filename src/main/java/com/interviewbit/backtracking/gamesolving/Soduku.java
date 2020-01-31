@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class Soduku {
 
 	int n = 9;
-	int bd[][] = new int[this.n][this.n];
+    int[][] bd = new int[this.n][this.n];
 
 	public void solveSudoku(final ArrayList<ArrayList<Character>> a) {
 		for (int i = 0; i < this.n; i++) {

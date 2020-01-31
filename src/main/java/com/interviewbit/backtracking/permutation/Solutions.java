@@ -37,7 +37,7 @@ public class Solutions {
 
 	}
 
-	public static void main(final String args[]) throws Exception {
+    public static void main(final String[] args) throws Exception {
 		final Solutions p = new Solutions();
 		final ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3));
 		System.out.println(p.permute(list));

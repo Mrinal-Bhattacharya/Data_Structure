@@ -31,9 +31,6 @@ public class BalancingSymbolStack {
 				stack.push(s.charAt(i));
 			}
 		}
-		if (stack.isEmpty()) {
-			return true;
-		}
-		return false;
-	}
+        return stack.isEmpty();
+    }
 }

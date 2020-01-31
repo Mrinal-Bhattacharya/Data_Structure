@@ -10,8 +10,8 @@ public class MaxDistance {
 		int maxDiff;
 		int i, j;
 		final int n = A.size();
-		final int RMax[] = new int[A.size()];
-		final int LMin[] = new int[A.size()];
+        final int[] RMax = new int[A.size()];
+        final int[] LMin = new int[A.size()];
 		LMin[0] = A.get(0);
 		for (i = 1; i < n; ++i) {
 			LMin[i] = Math.min(A.get(i), LMin[i - 1]);

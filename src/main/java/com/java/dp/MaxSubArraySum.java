@@ -4,7 +4,7 @@ import java.util.List;
 
 public class MaxSubArraySum {
 
-	static void maxSubArraySum(final int a[], final int size) {
+    static void maxSubArraySum(final int[] a, final int size) {
 		int max_so_far = Integer.MIN_VALUE, max_ending_here = 0, start = 0, end = 0, s = 0;
 
 		for (int i = 0; i < size; i++) {
@@ -38,7 +38,7 @@ public class MaxSubArraySum {
 
 	// Driver code
 	public static void main(final String[] args) {
-		final int a[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+        final int[] a = {-2, -3, 4, -1, -2, 1, 5, -3};
 		final int n = a.length;
 		MaxSubArraySum.maxSubArraySum(a, n);
 	}

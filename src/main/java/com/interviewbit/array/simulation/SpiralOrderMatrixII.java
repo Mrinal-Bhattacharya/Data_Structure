@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class SpiralOrderMatrixII {
 	public ArrayList<ArrayList<Integer>> generateMatrix(final int A) {
 		final ArrayList<ArrayList<Integer>> output = new ArrayList<>(A);
-		final int arr[][] = new int[A][A];
+        final int[][] arr = new int[A][A];
 		int t = 0, b = A - 1, l = 0, r = A - 1;
 		int dir = 0;
 		int value = 1;

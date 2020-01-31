@@ -95,7 +95,7 @@ public class Solutions {
 
 		int openBrace = 0;
 		int closedBrace = 0;
-		final StringBuilder sb = new StringBuilder("");
+        final StringBuilder sb = new StringBuilder();
 		final char[] chars = A.toCharArray();
 
 		for (final char c : chars) {

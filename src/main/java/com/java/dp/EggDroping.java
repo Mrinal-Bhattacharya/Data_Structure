@@ -53,7 +53,7 @@ public class EggDroping {
 		 * A 2D table where entery eggFloor[i][j] will represent minimum number of
 		 * trials needed for i eggs and j floors.
 		 */
-		final int eggFloor[][] = new int[egg + 1][floor + 1];
+        final int[][] eggFloor = new int[egg + 1][floor + 1];
 		int res;
 		int i, j, x;
 
@@ -88,7 +88,7 @@ public class EggDroping {
 	}
 
 	/* Driver program to test to pront printDups */
-	public static void main(final String args[]) {
+    public static void main(final String[] args) {
 		final int n = 2, k = 28;
 		/*
 		 * System.out.println("Minimum number of trials in worst case with " + n +

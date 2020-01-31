@@ -10,7 +10,7 @@ public class ExcelColumnTitle {
 				str = 'Z' + str;
 			} else {
 				final int value = (rem + 'A') - 1;
-				str = Character.toString((char) value) + str;
+                str = (char) value + str;
 			}
 			A--;
 			A = A / 26;

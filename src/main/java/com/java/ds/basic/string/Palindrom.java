@@ -8,9 +8,6 @@ public class Palindrom {
 			i++;
 			j--;
 		}
-		if (i < j) {
-			return false;
-		}
-		return true;
-	}
+        return i >= j;
+    }
 }

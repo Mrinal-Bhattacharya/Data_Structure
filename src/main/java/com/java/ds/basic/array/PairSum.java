@@ -15,13 +15,10 @@ public class PairSum implements Comparable<PairSum> {
 	}
 
 	static boolean noCommon(final PairSum a, final PairSum b) {
-		if ((a.first == b.first) || (a.first == b.sec) || (a.sec == b.first) || (a.sec == b.sec)) {
-			return false;
-		}
-		return true;
-	}
+        return (a.first != b.first) && (a.first != b.sec) && (a.sec != b.first) && (a.sec != b.sec);
+    }
 
-	static void findFourElements(final int arr[], final int n, final int X) {
+    static void findFourElements(final int[] arr, final int n, final int X) {
 		int i, j;
 
 		// Create an auxiliary array to store all pair sums
@@ -74,7 +71,7 @@ public class PairSum implements Comparable<PairSum> {
 	}
 
 	public static void main(final String[] args) {
-		final int arr[] = { 10, 20, 30, 40, 1, 2 };
+        final int[] arr = {10, 20, 30, 40, 1, 2};
 		final int X = 91;
 		PairSum.findFourElements(arr, 6, X);
 	}

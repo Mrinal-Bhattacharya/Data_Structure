@@ -28,7 +28,7 @@ public class MatrixTree {
 
 		System.out.println(result);
 		final MatrixTree obj = new MatrixTree();
-		final int graph[][] = { { 0, 1, 1, 0 }, { 1, 0, 1, 1 }, { 1, 1, 0, 1 }, { 0, 1, 1, 0 } };
+        final int[][] graph = {{0, 1, 1, 0}, {1, 0, 1, 1}, {1, 1, 0, 1}, {0, 1, 1, 0}};
 
 		System.out.println("Total number of Triangle in Graph : " + obj.triangleInGraph(graph));
 	}
@@ -57,7 +57,7 @@ public class MatrixTree {
 		return degree;
 	}
 
-	int triangleInGraph(final int graph[][]) {
+    int triangleInGraph(final int[][] graph) {
 		final int[][] aux2 = new int[4][4];
 		final int[][] aux3 = new int[4][4];
 		for (int i = 0; i < 4; i++) {

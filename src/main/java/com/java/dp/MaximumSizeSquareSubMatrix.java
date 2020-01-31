@@ -57,8 +57,7 @@ public class MaximumSizeSquareSubMatrix {
 
 	// Driver program
 	public static void main(final String[] args) {
-		final int M[][] = { { 0, 1, 1, 0, 1 }, { 1, 1, 0, 1, 0 }, { 0, 1, 1, 1, 0 }, { 1, 1, 1, 1, 0 },
-				{ 1, 1, 1, 1, 1 }, { 0, 0, 0, 0, 0 } };
+        final int[][] M = {{0, 1, 1, 0, 1}, {1, 1, 0, 1, 0}, {0, 1, 1, 1, 0}, {1, 1, 1, 1, 0}, {1, 1, 1, 1, 1}, {0, 0, 0, 0, 0}};
 
 		System.out.println(new MaximumSizeSquareSubMatrix().solution(M));
 	}

@@ -1,13 +1,6 @@
 package com.java.ds.basic.tree;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTreeSolutions {
 
@@ -692,7 +685,7 @@ public class BinaryTreeSolutions {
 	 * should be 0 and len -1. The function doesn't do any error checking for
 	 * cases where inorder and preorder do not form a tree
 	 */
-	BinaryTreeNode buildTree(final int in[], final int pre[], final int inStrt, final int inEnd) {
+    BinaryTreeNode buildTree(final int[] in, final int[] pre, final int inStrt, final int inEnd) {
 		if (inStrt > inEnd) {
 			return null;
 		}
@@ -728,7 +721,7 @@ public class BinaryTreeSolutions {
 	 * should be 0 and len -1. The function doesn't do any error checking for
 	 * cases where inorder and preorder do not form a tree
 	 */
-	public BinaryTreeNode buildTreePost(final int in[], final int post[], final int inStrt, final int inEnd) {
+    public BinaryTreeNode buildTreePost(final int[] in, final int[] post, final int inStrt, final int inEnd) {
 		if (inStrt > inEnd) {
 			return null;
 		}
@@ -880,7 +873,7 @@ public class BinaryTreeSolutions {
 	 * Function to find index of value in arr[start...end] The function assumes
 	 * that value is present in in[]
 	 */
-	int search(final int arr[], final int strt, final int end, final int value) {
+    int search(final int[] arr, final int strt, final int end, final int value) {
 		int i;
 		for (i = strt; i <= end; i++) {
 			if (arr[i] == value) {
@@ -905,7 +898,7 @@ public class BinaryTreeSolutions {
 	}
 
 	public void printPath(final BinaryTreeNode root) {
-		final int path[] = new int[256];
+        final int[] path = new int[256];
 		this.printPaths(root, path, 0);
 	}
 

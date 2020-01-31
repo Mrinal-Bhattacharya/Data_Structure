@@ -14,14 +14,50 @@ class ArticulationPoint {
 		this.graph = graph;
 	}
 
+    // Driver method
+    public static void main(final String[] args) {
+        // Create graphs given in above diagrams
+        System.out.println("Articulation points in first graph ");
+        final Graph g1 = new Graph(5);
+        g1.addEdge(1, 0);
+        g1.addEdge(0, 2);
+        g1.addEdge(2, 1);
+        g1.addEdge(0, 3);
+        g1.addEdge(3, 4);
+        ArticulationPoint ap = new ArticulationPoint(g1);
+        ap.AP();
+        System.out.println();
+
+        System.out.println("Articulation points in Second graph");
+        final Graph g2 = new Graph(4);
+        g2.addEdge(0, 1);
+        g2.addEdge(1, 2);
+        g2.addEdge(2, 3);
+        ap = new ArticulationPoint(g2);
+        ap.AP();
+        System.out.println();
+
+        System.out.println("Articulation points in Third graph ");
+        final Graph g3 = new Graph(7);
+        g3.addEdge(0, 1);
+        g3.addEdge(1, 2);
+        g3.addEdge(2, 0);
+        g3.addEdge(1, 3);
+        g3.addEdge(1, 4);
+        g3.addEdge(1, 6);
+        g3.addEdge(3, 5);
+        g3.addEdge(4, 5);
+        ap = new ArticulationPoint(g3);
+        ap.AP();
+    }
+
 	// A recursive function that find articulation points using DFS
 	// u --> The vertex to be visited next
 	// visited[] --> keeps tract of visited vertices
 	// disc[] --> Stores discovery times of visited vertices
 	// parent[] --> Stores parent vertices in DFS tree
 	// ap[] --> Store articulation points
-	void APUtil(final int u, final boolean visited[], final int disc[], final int low[], final int parent[],
-			final boolean ap[]) {
+    void APUtil(final int u, final boolean[] visited, final int[] disc, final int[] low, final int[] parent, final boolean[] ap) {
 
 		// Count of children in DFS Tree
 		int children = 0;
@@ -72,11 +108,11 @@ class ArticulationPoint {
 	// The function to do DFS traversal. It uses recursive function APUtil()
 	void AP() {
 		// Mark all the vertices as not visited
-		final boolean visited[] = new boolean[this.graph.V];
-		final int disc[] = new int[this.graph.V];
-		final int low[] = new int[this.graph.V];
-		final int parent[] = new int[this.graph.V];
-		final boolean ap[] = new boolean[this.graph.V]; // To store articulation points
+        final boolean[] visited = new boolean[this.graph.V];
+        final int[] disc = new int[this.graph.V];
+        final int[] low = new int[this.graph.V];
+        final int[] parent = new int[this.graph.V];
+        final boolean[] ap = new boolean[this.graph.V]; // To store articulation points
 
 		// Initialize parent and visited, and ap(articulation point)
 		// arrays
@@ -100,43 +136,6 @@ class ArticulationPoint {
 				System.out.print(i + " ");
 			}
 		}
-	}
-
-	// Driver method
-	public static void main(final String args[]) {
-		// Create graphs given in above diagrams
-		System.out.println("Articulation points in first graph ");
-		final Graph g1 = new Graph(5);
-		g1.addEdge(1, 0);
-		g1.addEdge(0, 2);
-		g1.addEdge(2, 1);
-		g1.addEdge(0, 3);
-		g1.addEdge(3, 4);
-		ArticulationPoint ap = new ArticulationPoint(g1);
-		ap.AP();
-		System.out.println();
-
-		System.out.println("Articulation points in Second graph");
-		final Graph g2 = new Graph(4);
-		g2.addEdge(0, 1);
-		g2.addEdge(1, 2);
-		g2.addEdge(2, 3);
-		ap = new ArticulationPoint(g2);
-		ap.AP();
-		System.out.println();
-
-		System.out.println("Articulation points in Third graph ");
-		final Graph g3 = new Graph(7);
-		g3.addEdge(0, 1);
-		g3.addEdge(1, 2);
-		g3.addEdge(2, 0);
-		g3.addEdge(1, 3);
-		g3.addEdge(1, 4);
-		g3.addEdge(1, 6);
-		g3.addEdge(3, 5);
-		g3.addEdge(4, 5);
-		ap = new ArticulationPoint(g3);
-		ap.AP();
 	}
 }
 // This code is contributed by Aakash Hasija

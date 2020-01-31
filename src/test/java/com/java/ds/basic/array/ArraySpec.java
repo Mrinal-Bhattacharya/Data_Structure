@@ -1,19 +1,28 @@
 package com.java.ds.basic.array;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ArraySpec {
+
+    public static void main(final String[] args) {
+        final int[] arr = {1, 3, 2, 1, 3, 6, 6};
+        final int arr_size = arr.length;
+        final ArraySpec a = new ArraySpec();
+        // a.printRepeating(arr, arr_size);
+        a.printRepeating1(arr, arr_size);
+        // System.out.println(s);
+    }
 
 	@Test
 	public void longestSpanOfSameSumInArraysBinary() throws Exception {
-		final int arr1[] = { 0, 1, 2, 3, 0, 0 };
-		final int arr2[] = { 1, 0, 1, 2, 3, 1 };
+        final int[] arr1 = {0, 1, 2, 3, 0, 0};
+        final int[] arr2 = {1, 0, 1, 2, 3, 1};
 		final int result = new ArraySolutions().longestCommonSumSpan(arr1, arr2, arr1.length);
 		final int result2 = new ArraySolutions().longestCommonSumSpan2(arr1, arr2, arr1.length);
 		Assertions.assertThat(result).isEqualTo(4);
@@ -23,44 +32,44 @@ public class ArraySpec {
 
 	@Test
 	public void union() throws Exception {
-		final int arr1[] = { 1, 3, 4, 5, 7 };
-		final int arr2[] = { 2, 3, 5, 6, };
+        final int[] arr1 = {1, 3, 4, 5, 7};
+        final int[] arr2 = {2, 3, 5, 6,};
 		final List<Integer> union = new ArraySolutions().union(arr1, arr2, arr1.length, arr2.length);
 		Assertions.assertThat(union).containsExactly(1, 2, 3, 4, 5, 6, 7);
 	}
 
 	@Test
 	public void intersection() throws Exception {
-		final int arr1[] = { 1, 3, 4, 5, 7 };
-		final int arr2[] = { 2, 3, 5, 6, };
+        final int[] arr1 = {1, 3, 4, 5, 7};
+        final int[] arr2 = {2, 3, 5, 6,};
 		final List<Integer> intersection = new ArraySolutions().intersection(arr1, arr2, arr1.length, arr2.length);
 		Assertions.assertThat(intersection).containsExactly(3, 5);
 	}
 
 	@Test
 	public void missingNo() throws Exception {
-		final int arr1[] = { 1, 2, 3, 5, 6 };
+        final int[] arr1 = {1, 2, 3, 5, 6};
 		final int result = new ArraySolutions().missingNo(arr1, 5);
 		Assertions.assertThat(result).isEqualTo(4);
 	}
 
 	@Test
 	public void minDist() throws Exception {
-		final int arr1[] = { 3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3 };
+        final int[] arr1 = {3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3};
 		final int result = new ArraySolutions().minDist(arr1, 3, 6);
 		Assertions.assertThat(result).isEqualTo(4);
 	}
 
 	@Test
 	public void mooreMajorityAlgo() {
-		final int arr[] = { 3, 3, 4, 2, 4, 4, 2, 4, 4 };
+        final int[] arr = {3, 3, 4, 2, 4, 4, 2, 4, 4};
 		final int result = new ArraySolutions().mooreMajorityAlgo(arr);
 		Assertions.assertThat(arr[result]).isEqualTo(4);
 	}
 
 	@Test
 	public void getOddOcuurence() {
-		final int arr[] = { 3, 3, 4, 2, 4, 4, 2, 4, 4 };
+        final int[] arr = {3, 3, 4, 2, 4, 4, 2, 4, 4};
 		final int result = new ArraySolutions().getOddOccurence(arr);
 		Assertions.assertThat(result).isEqualTo(4);
 	}
@@ -68,33 +77,33 @@ public class ArraySpec {
 	@Ignore
 	@Test
 	public void fixPoint() {
-		final int arr[] = { -10, -1, 0, 3, 10, 11, 30, 50, 100 };
+        final int[] arr = {-10, -1, 0, 3, 10, 11, 30, 50, 100};
 		final int result = new ArraySolutions().fixPointByBinarySearch(arr, 0, arr.length - 1);
 		Assertions.assertThat(result).isEqualTo(3);
 	}
 
 	@Test
 	public void nextGreatest() {
-		final int arr[] = { 16, 17, 4, 3, 5, 2 };
+        final int[] arr = {16, 17, 4, 3, 5, 2};
 		new ArraySolutions().nextGreatest(arr, arr.length);
 		Assertions.assertThat(arr).containsExactly(17, 5, 5, 5, 2, -1);
 	}
 
 	@Test
 	public void findPeek() {
-		final int arr[] = { 10, 20, 15, 2, 23, 90, 67 };
+        final int[] arr = {10, 20, 15, 2, 23, 90, 67};
 		final int result = new ArraySolutions().findPeek(arr, 0, arr.length - 1, arr.length);
 		Assertions.assertThat(result).isEqualTo(1);
 	}
 
 	@Test
 	public void countIncressing() {
-		final int arr[] = { 1, 2, 2, 4 };
+        final int[] arr = {1, 2, 2, 4};
 		final int result = new ArraySolutions().countIncreasing(arr, arr.length);
 		Assertions.assertThat(result).isEqualTo(2);
 	}
 
-	void printRepeating(final int arr[], final int size) {
+    void printRepeating(final int[] arr, final int size) {
 		int i;
 		System.out.println("The repeating elements are : ");
 
@@ -107,16 +116,7 @@ public class ArraySpec {
 		}
 	}
 
-	public static void main(final String[] args) {
-		final int arr[] = { 1, 3, 2, 1, 3, 6, 6 };
-		final int arr_size = arr.length;
-		final ArraySpec a = new ArraySpec();
-		// a.printRepeating(arr, arr_size);
-		a.printRepeating1(arr, arr_size);
-		// System.out.println(s);
-	}
-
-	void printRepeating1(final int arr[], final int n) {
+    void printRepeating1(final int[] arr, final int n) {
 		// First check all the values that are
 		// present in an array then go to that
 		// values as indexes and increment by
