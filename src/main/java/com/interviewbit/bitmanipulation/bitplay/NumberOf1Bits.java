@@ -1,0 +1,12 @@
+package com.interviewbit.bitmanipulation.bitplay;
+
+public class NumberOf1Bits {
+    public int numSetBits(long a) {
+        int count = 0;
+        while (a > 0) {
+            count += a & 1;
+            a >>= 1;
+        }
+        return count;
+    }
+}

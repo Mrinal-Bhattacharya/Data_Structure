@@ -1,7 +1,5 @@
 package com.interviewbit.greedy.bucket;
 
-import com.interviewbit.string.prettyprint.Test;
-
 public class Seats {
     private static final long MOD = 10000003;
 
