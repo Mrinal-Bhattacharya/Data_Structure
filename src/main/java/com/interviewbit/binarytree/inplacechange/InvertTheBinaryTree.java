@@ -2,7 +2,7 @@ package com.interviewbit.binarytree.inplacechange;
 
 import com.interviewbit.binarytree.TreeNode;
 
-public class InvertTheBinaryTree {
+public class 	InvertTheBinaryTree {
 	public TreeNode invertTree(final TreeNode A) {
 		if (null == A) {
 			return null;

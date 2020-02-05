@@ -7,7 +7,6 @@ public class SymmetricBinaryTree {
 		if (A == null) {
 			return 1;
 		}
-
 		return this.areNodeSymmetric(A.left, A.right) == true ? 1 : 0;
 	}
 
@@ -21,7 +20,6 @@ public class SymmetricBinaryTree {
 		if (node1.val != node2.val) {
 			return false;
 		}
-
 		return this.areNodeSymmetric(node1.left, node2.right) && this.areNodeSymmetric(node1.right, node2.left);
 	}
 }

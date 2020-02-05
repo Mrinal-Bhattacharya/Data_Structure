@@ -1,0 +1,15 @@
+package com.interviewbit.heapandmap.maps;
+
+public class Node {
+    public int key;
+    public int val;
+    public Node prev;
+    public Node next;
+
+    public Node(final int key, final int val) {
+        this.key = key;
+        this.val = val;
+        this.prev = null;
+        this.next = null;
+    }
+}

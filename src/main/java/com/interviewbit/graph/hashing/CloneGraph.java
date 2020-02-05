@@ -33,4 +33,4 @@ class UndirectedGraphNode {
         label = x;
         neighbors = new ArrayList<UndirectedGraphNode>();
     }
-};
+}

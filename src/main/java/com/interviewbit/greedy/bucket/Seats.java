@@ -28,14 +28,4 @@ public class Seats {
         return (int) (moves % MOD);
     }
 
-    public void main(final Integer test) {
-        Test t = null;
-        try {
-            t = new Test();
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }

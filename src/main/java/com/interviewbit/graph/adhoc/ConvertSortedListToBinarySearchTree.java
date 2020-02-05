@@ -1,5 +1,8 @@
 package com.interviewbit.graph.adhoc;
 
+import com.interviewbit.binarytree.TreeNode;
+import com.interviewbit.linkedlist.ListNode;
+
 public class ConvertSortedListToBinarySearchTree {
     static ListNode h;
 
@@ -59,24 +62,3 @@ public class ConvertSortedListToBinarySearchTree {
     }
 }
 
-//  Definition for singly-linked list.
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-
-// Definition for binary tree
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}

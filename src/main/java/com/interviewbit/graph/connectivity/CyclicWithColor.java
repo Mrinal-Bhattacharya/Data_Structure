@@ -5,21 +5,7 @@ import com.java.graph.Graph;
 public class CyclicWithColor {
     static int WHITE = 0, GRAY = 1, BLACK = 2;
 
-    public static void main(final String[] args) {
-        final Graph graph = new Graph(4);
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 2);
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 0);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 3);
-        if (isCyclicColor(graph)) {
-            System.out.println("cyclic");
-        }
-        else {
-            System.out.println("Non cyclic");
-        }
-    }
+
 
     static boolean isCyclicColor(final Graph g) {
         // Initialize color of all vertices as WHITE
@@ -62,5 +48,20 @@ public class CyclicWithColor {
         // Mark this vertex as processed
         color[u] = CyclicWithColor.BLACK;
         return false;
+    }
+    public static void main(final String[] args) {
+        final Graph graph = new Graph(4);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 3);
+        if (isCyclicColor(graph)) {
+            System.out.println("cyclic");
+        }
+        else {
+            System.out.println("Non cyclic");
+        }
     }
 }
